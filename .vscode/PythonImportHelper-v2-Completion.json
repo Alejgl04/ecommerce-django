@@ -49,6 +49,22 @@
         "documentation": {}
     },
     {
+        "label": "settings",
+        "importPath": "django.conf",
+        "description": "django.conf",
+        "isExtraImport": true,
+        "detail": "django.conf",
+        "documentation": {}
+    },
+    {
+        "label": "static",
+        "importPath": "django.conf.urls.static",
+        "description": "django.conf.urls.static",
+        "isExtraImport": true,
+        "detail": "django.conf.urls.static",
+        "documentation": {}
+    },
+    {
         "label": "get_wsgi_application",
         "importPath": "django.core.wsgi",
         "description": "django.core.wsgi",
@@ -243,7 +259,7 @@
         "kind": 5,
         "importPath": "ecommerce.ecommerce.settings",
         "description": "ecommerce.ecommerce.settings",
-        "peekOfCode": "LANGUAGE_CODE = 'en-us'\nTIME_ZONE = 'UTC'\nUSE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.1/howto/static-files/\nSTATIC_URL = 'static/'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'",
+        "peekOfCode": "LANGUAGE_CODE = 'en-us'\nTIME_ZONE = 'UTC'\nUSE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.1/howto/static-files/\nSTATIC_URL = '/static/'\nSTATICFILES_DIRS = [BASE_DIR / 'static']\nMEDIA_URL = '/media/'\nMEDIA_ROOT = BASE_DIR / 'static/media'",
         "detail": "ecommerce.ecommerce.settings",
         "documentation": {}
     },
@@ -252,7 +268,7 @@
         "kind": 5,
         "importPath": "ecommerce.ecommerce.settings",
         "description": "ecommerce.ecommerce.settings",
-        "peekOfCode": "TIME_ZONE = 'UTC'\nUSE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.1/howto/static-files/\nSTATIC_URL = 'static/'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'",
+        "peekOfCode": "TIME_ZONE = 'UTC'\nUSE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.1/howto/static-files/\nSTATIC_URL = '/static/'\nSTATICFILES_DIRS = [BASE_DIR / 'static']\nMEDIA_URL = '/media/'\nMEDIA_ROOT = BASE_DIR / 'static/media'\n# Default primary key field type",
         "detail": "ecommerce.ecommerce.settings",
         "documentation": {}
     },
@@ -261,7 +277,7 @@
         "kind": 5,
         "importPath": "ecommerce.ecommerce.settings",
         "description": "ecommerce.ecommerce.settings",
-        "peekOfCode": "USE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.1/howto/static-files/\nSTATIC_URL = 'static/'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'",
+        "peekOfCode": "USE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.1/howto/static-files/\nSTATIC_URL = '/static/'\nSTATICFILES_DIRS = [BASE_DIR / 'static']\nMEDIA_URL = '/media/'\nMEDIA_ROOT = BASE_DIR / 'static/media'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field",
         "detail": "ecommerce.ecommerce.settings",
         "documentation": {}
     },
@@ -270,7 +286,7 @@
         "kind": 5,
         "importPath": "ecommerce.ecommerce.settings",
         "description": "ecommerce.ecommerce.settings",
-        "peekOfCode": "USE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.1/howto/static-files/\nSTATIC_URL = 'static/'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'",
+        "peekOfCode": "USE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.1/howto/static-files/\nSTATIC_URL = '/static/'\nSTATICFILES_DIRS = [BASE_DIR / 'static']\nMEDIA_URL = '/media/'\nMEDIA_ROOT = BASE_DIR / 'static/media'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'",
         "detail": "ecommerce.ecommerce.settings",
         "documentation": {}
     },
@@ -279,7 +295,34 @@
         "kind": 5,
         "importPath": "ecommerce.ecommerce.settings",
         "description": "ecommerce.ecommerce.settings",
-        "peekOfCode": "STATIC_URL = 'static/'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'",
+        "peekOfCode": "STATIC_URL = '/static/'\nSTATICFILES_DIRS = [BASE_DIR / 'static']\nMEDIA_URL = '/media/'\nMEDIA_ROOT = BASE_DIR / 'static/media'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'",
+        "detail": "ecommerce.ecommerce.settings",
+        "documentation": {}
+    },
+    {
+        "label": "STATICFILES_DIRS",
+        "kind": 5,
+        "importPath": "ecommerce.ecommerce.settings",
+        "description": "ecommerce.ecommerce.settings",
+        "peekOfCode": "STATICFILES_DIRS = [BASE_DIR / 'static']\nMEDIA_URL = '/media/'\nMEDIA_ROOT = BASE_DIR / 'static/media'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'",
+        "detail": "ecommerce.ecommerce.settings",
+        "documentation": {}
+    },
+    {
+        "label": "MEDIA_URL",
+        "kind": 5,
+        "importPath": "ecommerce.ecommerce.settings",
+        "description": "ecommerce.ecommerce.settings",
+        "peekOfCode": "MEDIA_URL = '/media/'\nMEDIA_ROOT = BASE_DIR / 'static/media'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'",
+        "detail": "ecommerce.ecommerce.settings",
+        "documentation": {}
+    },
+    {
+        "label": "MEDIA_ROOT",
+        "kind": 5,
+        "importPath": "ecommerce.ecommerce.settings",
+        "description": "ecommerce.ecommerce.settings",
+        "peekOfCode": "MEDIA_ROOT = BASE_DIR / 'static/media'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'",
         "detail": "ecommerce.ecommerce.settings",
         "documentation": {}
     },
@@ -297,7 +340,7 @@
         "kind": 5,
         "importPath": "ecommerce.ecommerce.urls",
         "description": "ecommerce.ecommerce.urls",
-        "peekOfCode": "urlpatterns = [\n    path('admin/', admin.site.urls),\n]",
+        "peekOfCode": "urlpatterns = [\n    path('admin/', admin.site.urls),\n]\nurlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)",
         "detail": "ecommerce.ecommerce.urls",
         "documentation": {}
     },
@@ -317,6 +360,24 @@
         "description": "ecommerce.store.migrations.0001_initial",
         "peekOfCode": "class Migration(migrations.Migration):\n    initial = True\n    dependencies = [\n    ]\n    operations = [\n        migrations.CreateModel(\n            name='Category',\n            fields=[\n                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),\n                ('name', models.CharField(db_index=True, max_length=250)),",
         "detail": "ecommerce.store.migrations.0001_initial",
+        "documentation": {}
+    },
+    {
+        "label": "CategoryAdmin",
+        "kind": 6,
+        "importPath": "ecommerce.store.admin",
+        "description": "ecommerce.store.admin",
+        "peekOfCode": "class CategoryAdmin(admin.ModelAdmin):\n  prepopulated_fields = {'slug': ('name',)}\n@admin.register(Product)\nclass ProductAdmin(admin.ModelAdmin):\n  prepopulated_fields = {'slug': ('title',)}",
+        "detail": "ecommerce.store.admin",
+        "documentation": {}
+    },
+    {
+        "label": "ProductAdmin",
+        "kind": 6,
+        "importPath": "ecommerce.store.admin",
+        "description": "ecommerce.store.admin",
+        "peekOfCode": "class ProductAdmin(admin.ModelAdmin):\n  prepopulated_fields = {'slug': ('title',)}",
+        "detail": "ecommerce.store.admin",
         "documentation": {}
     },
     {
