@@ -49,6 +49,22 @@
         "documentation": {}
     },
     {
+        "label": "include",
+        "importPath": "django.urls",
+        "description": "django.urls",
+        "isExtraImport": true,
+        "detail": "django.urls",
+        "documentation": {}
+    },
+    {
+        "label": "path",
+        "importPath": "django.urls",
+        "description": "django.urls",
+        "isExtraImport": true,
+        "detail": "django.urls",
+        "documentation": {}
+    },
+    {
         "label": "settings",
         "importPath": "django.conf",
         "description": "django.conf",
@@ -89,11 +105,36 @@
         "documentation": {}
     },
     {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
         "label": "models",
         "importPath": "django.db",
         "description": "django.db",
         "isExtraImport": true,
         "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "django.db.models.deletion",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "django.db.models.deletion",
+        "description": "django.db.models.deletion",
+        "detail": "django.db.models.deletion",
         "documentation": {}
     },
     {
@@ -340,7 +381,7 @@
         "kind": 5,
         "importPath": "ecommerce.ecommerce.urls",
         "description": "ecommerce.ecommerce.urls",
-        "peekOfCode": "urlpatterns = [\n    path('admin/', admin.site.urls),\n]\nurlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)",
+        "peekOfCode": "urlpatterns = [\n    path('admin/', admin.site.urls),\n    path('', include('store.urls')),\n]\nurlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)",
         "detail": "ecommerce.ecommerce.urls",
         "documentation": {}
     },
@@ -360,6 +401,15 @@
         "description": "ecommerce.store.migrations.0001_initial",
         "peekOfCode": "class Migration(migrations.Migration):\n    initial = True\n    dependencies = [\n    ]\n    operations = [\n        migrations.CreateModel(\n            name='Category',\n            fields=[\n                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),\n                ('name', models.CharField(db_index=True, max_length=250)),",
         "detail": "ecommerce.store.migrations.0001_initial",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "ecommerce.store.migrations.0002_product_category",
+        "description": "ecommerce.store.migrations.0002_product_category",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('store', '0001_initial'),\n    ]\n    operations = [\n        migrations.AddField(\n            model_name='product',\n            name='category',\n            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, related_name='product', to='store.category'),\n        ),",
+        "detail": "ecommerce.store.migrations.0002_product_category",
         "documentation": {}
     },
     {
@@ -403,8 +453,35 @@
         "kind": 6,
         "importPath": "ecommerce.store.models",
         "description": "ecommerce.store.models",
-        "peekOfCode": "class Product(models.Model):\n  title = models.CharField(max_length=250)\n  brand = models.CharField(max_length=250, default='un-branded')\n  description = models.TextField(blank=True)\n  slug = models.SlugField(max_length=255)\n  price = models.DecimalField(max_digits=4, decimal_places=2)\n  image = models.ImageField(upload_to='images/')\n  class Meta:\n    verbose_name_plural = 'products'\n  def __str__(self):",
+        "peekOfCode": "class Product(models.Model):\n  title = models.CharField(max_length=250)\n  brand = models.CharField(max_length=250, default='un-branded')\n  description = models.TextField(blank=True)\n  slug = models.SlugField(max_length=255)\n  price = models.DecimalField(max_digits=4, decimal_places=2)\n  image = models.ImageField(upload_to='images/')\n  category = models.ForeignKey(Category, related_name='product', on_delete=models.CASCADE, null=True)\n  class Meta:\n    verbose_name_plural = 'products'",
         "detail": "ecommerce.store.models",
+        "documentation": {}
+    },
+    {
+        "label": "urlpatterns",
+        "kind": 5,
+        "importPath": "ecommerce.store.urls",
+        "description": "ecommerce.store.urls",
+        "peekOfCode": "urlpatterns = [\n  path('', views.store, name='store'),\n]",
+        "detail": "ecommerce.store.urls",
+        "documentation": {}
+    },
+    {
+        "label": "store",
+        "kind": 2,
+        "importPath": "ecommerce.store.views",
+        "description": "ecommerce.store.views",
+        "peekOfCode": "def store(request):\n  all_products = Product.objects.all()\n  context = {'all_products': all_products}\n  return render(request, 'store/index.html', context)\ndef categories(request):\n  all_categories = Category.objects.all()\n  return { 'all_categories': all_categories }\n  # return render(request, '', context)",
+        "detail": "ecommerce.store.views",
+        "documentation": {}
+    },
+    {
+        "label": "categories",
+        "kind": 2,
+        "importPath": "ecommerce.store.views",
+        "description": "ecommerce.store.views",
+        "peekOfCode": "def categories(request):\n  all_categories = Category.objects.all()\n  return { 'all_categories': all_categories }\n  # return render(request, '', context)",
+        "detail": "ecommerce.store.views",
         "documentation": {}
     },
     {
