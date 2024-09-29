@@ -57,6 +57,14 @@
         "documentation": {}
     },
     {
+        "label": "reverse",
+        "importPath": "django.urls",
+        "description": "django.urls",
+        "isExtraImport": true,
+        "detail": "django.urls",
+        "documentation": {}
+    },
+    {
         "label": "path",
         "importPath": "django.urls",
         "description": "django.urls",
@@ -155,6 +163,14 @@
     },
     {
         "label": "render",
+        "importPath": "django.shortcuts",
+        "description": "django.shortcuts",
+        "isExtraImport": true,
+        "detail": "django.shortcuts",
+        "documentation": {}
+    },
+    {
+        "label": "get_object_or_404",
         "importPath": "django.shortcuts",
         "description": "django.shortcuts",
         "isExtraImport": true,
@@ -444,7 +460,7 @@
         "kind": 6,
         "importPath": "ecommerce.store.models",
         "description": "ecommerce.store.models",
-        "peekOfCode": "class Category(models.Model):\n  name = models.CharField(max_length=250, db_index=True, null=False)\n  slug = models.SlugField(max_length=255, unique=True)\n  class Meta:\n    verbose_name_plural = 'categories'\n  def __str__(self):\n    return self.name\nclass Product(models.Model):\n  title = models.CharField(max_length=250)\n  brand = models.CharField(max_length=250, default='un-branded')",
+        "peekOfCode": "class Category(models.Model):\n  name = models.CharField(max_length=250, db_index=True, null=False)\n  slug = models.SlugField(max_length=255, unique=True)\n  class Meta:\n    verbose_name_plural = 'categories'\n  def __str__(self):\n    return self.name\n  def get_absolute_url(self):\n    return reverse('list-category', args=[self.slug])\nclass Product(models.Model):",
         "detail": "ecommerce.store.models",
         "documentation": {}
     },
@@ -462,7 +478,7 @@
         "kind": 5,
         "importPath": "ecommerce.store.urls",
         "description": "ecommerce.store.urls",
-        "peekOfCode": "urlpatterns = [\n  path('', views.store, name='store'),\n]",
+        "peekOfCode": "urlpatterns = [\n  path('', views.store, name='store'),\n  # Individual Product\n  path('product/<slug:product_slug>/', views.product_info, name='product-info'),\n  # Individual Category\n  path('search/<slug:category_slug>/', views.list_category, name='list-category'),\n]",
         "detail": "ecommerce.store.urls",
         "documentation": {}
     },
@@ -471,7 +487,7 @@
         "kind": 2,
         "importPath": "ecommerce.store.views",
         "description": "ecommerce.store.views",
-        "peekOfCode": "def store(request):\n  all_products = Product.objects.all()\n  context = {'all_products': all_products}\n  return render(request, 'store/index.html', context)\ndef categories(request):\n  all_categories = Category.objects.all()\n  return { 'all_categories': all_categories }\n  # return render(request, '', context)",
+        "peekOfCode": "def store(request):\n  all_products = Product.objects.all()\n  context = {'all_products': all_products}\n  return render(request, 'store/index.html', context)\ndef categories(request):\n  all_categories = Category.objects.all()\n  return { 'all_categories': all_categories }\ndef list_category(request, category_slug=None):\n  category = get_object_or_404(Category, slug=category_slug)\n  products = Product.objects.filter(category=category)",
         "detail": "ecommerce.store.views",
         "documentation": {}
     },
@@ -480,7 +496,25 @@
         "kind": 2,
         "importPath": "ecommerce.store.views",
         "description": "ecommerce.store.views",
-        "peekOfCode": "def categories(request):\n  all_categories = Category.objects.all()\n  return { 'all_categories': all_categories }\n  # return render(request, '', context)",
+        "peekOfCode": "def categories(request):\n  all_categories = Category.objects.all()\n  return { 'all_categories': all_categories }\ndef list_category(request, category_slug=None):\n  category = get_object_or_404(Category, slug=category_slug)\n  products = Product.objects.filter(category=category)\n  return render(request, 'store/list-category.html', {'category': category, 'products': products})\ndef product_info(request, product_slug):\n  product = get_object_or_404(Product, slug=product_slug)\n  context = {'product': product}",
+        "detail": "ecommerce.store.views",
+        "documentation": {}
+    },
+    {
+        "label": "list_category",
+        "kind": 2,
+        "importPath": "ecommerce.store.views",
+        "description": "ecommerce.store.views",
+        "peekOfCode": "def list_category(request, category_slug=None):\n  category = get_object_or_404(Category, slug=category_slug)\n  products = Product.objects.filter(category=category)\n  return render(request, 'store/list-category.html', {'category': category, 'products': products})\ndef product_info(request, product_slug):\n  product = get_object_or_404(Product, slug=product_slug)\n  context = {'product': product}\n  return render(request, 'store/product-info.html', context)",
+        "detail": "ecommerce.store.views",
+        "documentation": {}
+    },
+    {
+        "label": "product_info",
+        "kind": 2,
+        "importPath": "ecommerce.store.views",
+        "description": "ecommerce.store.views",
+        "peekOfCode": "def product_info(request, product_slug):\n  product = get_object_or_404(Product, slug=product_slug)\n  context = {'product': product}\n  return render(request, 'store/product-info.html', context)",
         "detail": "ecommerce.store.views",
         "documentation": {}
     },
