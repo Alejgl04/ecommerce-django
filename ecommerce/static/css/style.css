@@ -1,0 +1,11 @@
+@media (min-width: 768px) {
+  .h-middle-screen {
+    height: 270px!important;
+  }
+}
+
+@media (min-width: 1200px) {
+  .h-middle-screen {
+    height: 370px!important;
+  }
+}
