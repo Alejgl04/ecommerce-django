@@ -40,6 +40,30 @@
         "documentation": {}
     },
     {
+        "label": "Decimal",
+        "importPath": "decimal",
+        "description": "decimal",
+        "isExtraImport": true,
+        "detail": "decimal",
+        "documentation": {}
+    },
+    {
+        "label": "Product",
+        "importPath": "store.models",
+        "description": "store.models",
+        "isExtraImport": true,
+        "detail": "store.models",
+        "documentation": {}
+    },
+    {
+        "label": "Product",
+        "importPath": "store.models",
+        "description": "store.models",
+        "isExtraImport": true,
+        "detail": "store.models",
+        "documentation": {}
+    },
+    {
         "label": "models",
         "importPath": "django.db",
         "description": "django.db",
@@ -184,14 +208,6 @@
         "documentation": {}
     },
     {
-        "label": "Product",
-        "importPath": "store.models",
-        "description": "store.models",
-        "isExtraImport": true,
-        "detail": "store.models",
-        "documentation": {}
-    },
-    {
         "label": "os",
         "kind": 6,
         "isExtraImport": true,
@@ -316,7 +332,7 @@
         "kind": 2,
         "importPath": "ecommerce.cart.views",
         "description": "ecommerce.cart.views",
-        "peekOfCode": "def cart_summary(request):\n  return render(request, 'cart/cart-summary.html')\ndef cart_add(request):\n  cart = Cart(request)\n  if request.POST.get('action') == 'post':\n    product_id = int(request.POST.get('product_id'))\n    product_quantity = int(request.POST.get('product_quantity'))\n    product = get_object_or_404(Product, id = product_id)\n    cart.add(product = product, product_qty = product_quantity)\n    response = JsonResponse({'The product is called: ': product.title, ' and the product quantity is: ': product_quantity})",
+        "peekOfCode": "def cart_summary(request):\n  cart = Cart(request)\n  return render(request, 'cart/cart-summary.html', {'cart': cart})\ndef cart_add(request):\n  cart = Cart(request)\n  if request.POST.get('action') == 'post':\n    product_id = int(request.POST.get('product_id'))\n    product_quantity = int(request.POST.get('product_quantity'))\n    product = get_object_or_404(Product, id = product_id)\n    cart.add(product = product, product_qty = product_quantity)",
         "detail": "ecommerce.cart.views",
         "documentation": {}
     },
@@ -325,7 +341,7 @@
         "kind": 2,
         "importPath": "ecommerce.cart.views",
         "description": "ecommerce.cart.views",
-        "peekOfCode": "def cart_add(request):\n  cart = Cart(request)\n  if request.POST.get('action') == 'post':\n    product_id = int(request.POST.get('product_id'))\n    product_quantity = int(request.POST.get('product_quantity'))\n    product = get_object_or_404(Product, id = product_id)\n    cart.add(product = product, product_qty = product_quantity)\n    response = JsonResponse({'The product is called: ': product.title, ' and the product quantity is: ': product_quantity})\n    return response\ndef cart_delete(request):",
+        "peekOfCode": "def cart_add(request):\n  cart = Cart(request)\n  if request.POST.get('action') == 'post':\n    product_id = int(request.POST.get('product_id'))\n    product_quantity = int(request.POST.get('product_quantity'))\n    product = get_object_or_404(Product, id = product_id)\n    cart.add(product = product, product_qty = product_quantity)\n    cart_quantity = cart.__len__()\n    response = JsonResponse({'quantity': cart_quantity})\n    return response",
         "detail": "ecommerce.cart.views",
         "documentation": {}
     },
@@ -397,7 +413,7 @@
         "kind": 5,
         "importPath": "ecommerce.ecommerce.settings",
         "description": "ecommerce.ecommerce.settings",
-        "peekOfCode": "INSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',\n    'django.contrib.staticfiles',\n    'store',\n    'cart',\n]",
+        "peekOfCode": "INSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',\n    'django.contrib.staticfiles',\n    'store',\n    'cart',\n    'mathfilters',",
         "detail": "ecommerce.ecommerce.settings",
         "documentation": {}
     },
