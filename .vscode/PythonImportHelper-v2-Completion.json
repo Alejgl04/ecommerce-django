@@ -152,6 +152,14 @@
         "documentation": {}
     },
     {
+        "label": "get_object_or_404",
+        "importPath": "django.shortcuts",
+        "description": "django.shortcuts",
+        "isExtraImport": true,
+        "detail": "django.shortcuts",
+        "documentation": {}
+    },
+    {
         "label": "render",
         "importPath": "django.shortcuts",
         "description": "django.shortcuts",
@@ -165,6 +173,22 @@
         "description": "django.shortcuts",
         "isExtraImport": true,
         "detail": "django.shortcuts",
+        "documentation": {}
+    },
+    {
+        "label": "JsonResponse",
+        "importPath": "django.http",
+        "description": "django.http",
+        "isExtraImport": true,
+        "detail": "django.http",
+        "documentation": {}
+    },
+    {
+        "label": "Product",
+        "importPath": "store.models",
+        "description": "store.models",
+        "isExtraImport": true,
+        "detail": "store.models",
         "documentation": {}
     },
     {
@@ -261,6 +285,24 @@
         "documentation": {}
     },
     {
+        "label": "Cart",
+        "kind": 6,
+        "importPath": "ecommerce.cart.cart",
+        "description": "ecommerce.cart.cart",
+        "peekOfCode": "class Cart():\n  def __init__(self, request):\n    self.session = request.session\n    # Returning user - obtain his/her existing session\n    cart = self.session.get('session_key')\n    # New user - generate a new session\n    if 'session_key' not in request.session:\n      cart = self.session['session_key'] = {}\n    self.cart = cart\n  def add(self, product, product_qty):",
+        "detail": "ecommerce.cart.cart",
+        "documentation": {}
+    },
+    {
+        "label": "cart",
+        "kind": 2,
+        "importPath": "ecommerce.cart.context_processors",
+        "description": "ecommerce.cart.context_processors",
+        "peekOfCode": "def cart(request):\n  return {'cart': Cart(request) }",
+        "detail": "ecommerce.cart.context_processors",
+        "documentation": {}
+    },
+    {
         "label": "urlpatterns",
         "kind": 5,
         "importPath": "ecommerce.cart.urls",
@@ -274,7 +316,7 @@
         "kind": 2,
         "importPath": "ecommerce.cart.views",
         "description": "ecommerce.cart.views",
-        "peekOfCode": "def cart_summary(request):\n  pass\ndef cart_add(request):\n  pass\ndef cart_delete(request):\n  pass\ndef cart_update(request):\n  pass",
+        "peekOfCode": "def cart_summary(request):\n  return render(request, 'cart/cart-summary.html')\ndef cart_add(request):\n  cart = Cart(request)\n  if request.POST.get('action') == 'post':\n    product_id = int(request.POST.get('product_id'))\n    product_quantity = int(request.POST.get('product_quantity'))\n    product = get_object_or_404(Product, id = product_id)\n    cart.add(product = product, product_qty = product_quantity)\n    response = JsonResponse({'The product is called: ': product.title, ' and the product quantity is: ': product_quantity})",
         "detail": "ecommerce.cart.views",
         "documentation": {}
     },
@@ -283,7 +325,7 @@
         "kind": 2,
         "importPath": "ecommerce.cart.views",
         "description": "ecommerce.cart.views",
-        "peekOfCode": "def cart_add(request):\n  pass\ndef cart_delete(request):\n  pass\ndef cart_update(request):\n  pass",
+        "peekOfCode": "def cart_add(request):\n  cart = Cart(request)\n  if request.POST.get('action') == 'post':\n    product_id = int(request.POST.get('product_id'))\n    product_quantity = int(request.POST.get('product_quantity'))\n    product = get_object_or_404(Product, id = product_id)\n    cart.add(product = product, product_qty = product_quantity)\n    response = JsonResponse({'The product is called: ': product.title, ' and the product quantity is: ': product_quantity})\n    return response\ndef cart_delete(request):",
         "detail": "ecommerce.cart.views",
         "documentation": {}
     },
