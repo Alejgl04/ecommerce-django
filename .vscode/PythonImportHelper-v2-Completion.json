@@ -350,7 +350,7 @@
         "kind": 2,
         "importPath": "ecommerce.cart.views",
         "description": "ecommerce.cart.views",
-        "peekOfCode": "def cart_delete(request):\n  pass\ndef cart_update(request):\n  pass",
+        "peekOfCode": "def cart_delete(request):\n  cart = Cart(request)\n  if request.POST.get('action') == 'post':\n    product_id = int(request.POST.get('product_id'))\n    cart.delete(product = product_id)\n    cart_quantity = cart.__len__()\n    cart_total = cart.total()\n    response = JsonResponse({'quantity': cart_quantity, 'total': cart_total})\n    return response\ndef cart_update(request):",
         "detail": "ecommerce.cart.views",
         "documentation": {}
     },
@@ -359,7 +359,7 @@
         "kind": 2,
         "importPath": "ecommerce.cart.views",
         "description": "ecommerce.cart.views",
-        "peekOfCode": "def cart_update(request):\n  pass",
+        "peekOfCode": "def cart_update(request):\n  cart = Cart(request)\n  if request.POST.get('action') == 'post':\n    product_id = int(request.POST.get('product_id'))\n    print(product_id)\n    product_quantity = int(request.POST.get('product_quantity'))\n    print(product_quantity)\n    cart.update(product = product_id, product_qty = product_quantity)\n    cart_quantity = cart.__len__()\n    cart_total = cart.total()",
         "detail": "ecommerce.cart.views",
         "documentation": {}
     },
