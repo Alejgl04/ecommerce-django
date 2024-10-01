@@ -61,36 +61,39 @@
 
                 &nbsp;
 
-                <select id="">
+                <select id="select{{product.id}}">
 
                   <option selected>
-
                     {{item.qty}}
-
                   </option>
 
-                  <option value="">1</option>
+                  <option value="1">1</option>
+                  
+                  <option value="2">2</option>
 
-                  <option value="">2</option>
+                  <option value="3">3</option>
 
-                  <option value="">3</option>
-
-                  <option value="">4</option>
+                  <option value="4">4</option>
 
                 </select>
 
                 <br> <br>
 
-                <button type="button" id="update-button" class="btn btn-primary btn-sm update-button">
-                  Update
+                <button
+                  data-index="{{product.id}}"
+                  type="button"
+                  class="btn btn-primary btn-sm update-button">
+                    Update
 
                 </button>
 
                 &nbsp;
 
-                <button type="button" id="delete-button" class="btn btn-danger btn-sm delete-button">
-                  Delete
-
+                <button 
+                  data-index="{{product.id}}"
+                  type="button" 
+                  class="btn btn-danger btn-sm delete-button">
+                    Delete
                 </button>
 
 
@@ -113,7 +116,7 @@
 
     <div class="col-12 text-end">
 
-      <div class="h6 fw-bold"> Sub total: $ <div id="total" class="d-inline-flex"> {{cart.total}} </div>
+      <div class="h6 fw-bold"> Sub total: $ <div id="total" class="d-inline-flex"> {{ cart.total }} </div>
       </div>
 
     </div>
@@ -121,5 +124,65 @@
   </div>
 
 </main>
+
+<script>
+$(document).on('click', '.delete-button', function(e) {
+    e.preventDefault();
+
+    $.ajax({
+      type: 'POST',
+      url: '{% url "cart-delete" %}',
+      data: {
+        product_id: $(this).data('index'),
+        csrfmiddlewaretoken: '{{csrf_token}}',
+        action: 'post'
+      },
+
+      success: (json) => {
+            
+        location.reload();
+        document.getElementById('cart-qty').textContent = json.quantity;
+        document.getElementById('total').textContent = json.total;
+      
+      },
+
+      error: (xhr, errmsg, err) => {
+        console.log({err}, {errmsg});
+      }
+    })
+  })
+
+
+
+$(document).on('click', '.update-button', function(e) {
+  e.preventDefault();
+
+  let productIdCart = $(this).data('index'); 
+  
+  $.ajax({
+    type: 'POST',
+    url: '{% url "cart-update" %}',
+    data: {
+      product_id: productIdCart,
+      product_quantity: $('#select' + productIdCart + ' option:selected').text(),
+      csrfmiddlewaretoken: '{{csrf_token}}',
+      action: 'post'
+    },
+
+    success: (json) => {
+          
+      //location.reload();
+      document.getElementById('cart-qty').textContent = json.quantity;
+      document.getElementById('total').textContent = json.total;
+    
+    },
+
+    error: (xhr, errmsg, err) => {
+      console.log({err}, {errmsg});
+    }
+  })
+})
+</script>
+
 
 {% endblock %}
