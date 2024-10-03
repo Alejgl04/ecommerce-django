@@ -66,7 +66,9 @@ class Cart():
     
     products_db = Product.objects.filter(id__in=products_ids)
     
-    cart = self.cart.copy()
+    import copy
+    
+    cart = copy.deepcopy(self.cart)
     
     for product in products_db:
       cart[str(product.id)]['product'] = product
