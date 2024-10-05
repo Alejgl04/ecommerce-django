@@ -1,3 +1,14 @@
+
+.form-layout {
+  border-radius: 20px;
+  width: 36rem!important;
+}
+
+@media (max-width: 578px) {
+  .form-layout {
+    width: 90%!important;
+  }
+}
 @media (min-width: 768px) {
   .h-middle-screen {
     height: 270px!important;
