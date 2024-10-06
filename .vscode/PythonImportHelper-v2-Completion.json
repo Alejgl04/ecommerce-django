@@ -763,7 +763,7 @@
         "kind": 5,
         "importPath": "ecommerce.ecommerce.settings",
         "description": "ecommerce.ecommerce.settings",
-        "peekOfCode": "STATIC_URL = '/static/'\nSTATICFILES_DIRS = [BASE_DIR / 'static']\nMEDIA_URL = '/media/'\nMEDIA_ROOT = BASE_DIR / 'static/media'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nEMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'",
+        "peekOfCode": "STATIC_URL = '/static/'\nSTATICFILES_DIRS = [BASE_DIR / 'static']\nMEDIA_URL = '/media/'\nMEDIA_ROOT = BASE_DIR / 'static/media'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nEMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'\nEMAIL_HOST = 'smtp.gmail.com'\nEMAIL=PORT = '587'",
         "detail": "ecommerce.ecommerce.settings",
         "documentation": {}
     },
@@ -772,7 +772,7 @@
         "kind": 5,
         "importPath": "ecommerce.ecommerce.settings",
         "description": "ecommerce.ecommerce.settings",
-        "peekOfCode": "STATICFILES_DIRS = [BASE_DIR / 'static']\nMEDIA_URL = '/media/'\nMEDIA_ROOT = BASE_DIR / 'static/media'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nEMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'",
+        "peekOfCode": "STATICFILES_DIRS = [BASE_DIR / 'static']\nMEDIA_URL = '/media/'\nMEDIA_ROOT = BASE_DIR / 'static/media'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nEMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'\nEMAIL_HOST = 'smtp.gmail.com'\nEMAIL=PORT = '587'\nEMAIL_USE_TLS = 'True'",
         "detail": "ecommerce.ecommerce.settings",
         "documentation": {}
     },
@@ -781,7 +781,7 @@
         "kind": 5,
         "importPath": "ecommerce.ecommerce.settings",
         "description": "ecommerce.ecommerce.settings",
-        "peekOfCode": "MEDIA_URL = '/media/'\nMEDIA_ROOT = BASE_DIR / 'static/media'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nEMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'",
+        "peekOfCode": "MEDIA_URL = '/media/'\nMEDIA_ROOT = BASE_DIR / 'static/media'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nEMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'\nEMAIL_HOST = 'smtp.gmail.com'\nEMAIL=PORT = '587'\nEMAIL_USE_TLS = 'True'\nEMAIL_HOST_USER = 'aguerrerodev.web@gmail.com'",
         "detail": "ecommerce.ecommerce.settings",
         "documentation": {}
     },
@@ -790,7 +790,7 @@
         "kind": 5,
         "importPath": "ecommerce.ecommerce.settings",
         "description": "ecommerce.ecommerce.settings",
-        "peekOfCode": "MEDIA_ROOT = BASE_DIR / 'static/media'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nEMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'",
+        "peekOfCode": "MEDIA_ROOT = BASE_DIR / 'static/media'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nEMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'\nEMAIL_HOST = 'smtp.gmail.com'\nEMAIL=PORT = '587'\nEMAIL_USE_TLS = 'True'\nEMAIL_HOST_USER = 'aguerrerodev.web@gmail.com'\nEMAIL_HOST_PASSWORD = 'snvr tuie onlb ybpz'",
         "detail": "ecommerce.ecommerce.settings",
         "documentation": {}
     },
@@ -799,7 +799,7 @@
         "kind": 5,
         "importPath": "ecommerce.ecommerce.settings",
         "description": "ecommerce.ecommerce.settings",
-        "peekOfCode": "DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nEMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'",
+        "peekOfCode": "DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nEMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'\nEMAIL_HOST = 'smtp.gmail.com'\nEMAIL=PORT = '587'\nEMAIL_USE_TLS = 'True'\nEMAIL_HOST_USER = 'aguerrerodev.web@gmail.com'\nEMAIL_HOST_PASSWORD = 'snvr tuie onlb ybpz'",
         "detail": "ecommerce.ecommerce.settings",
         "documentation": {}
     },
@@ -808,7 +808,52 @@
         "kind": 5,
         "importPath": "ecommerce.ecommerce.settings",
         "description": "ecommerce.ecommerce.settings",
-        "peekOfCode": "EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'",
+        "peekOfCode": "EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'\nEMAIL_HOST = 'smtp.gmail.com'\nEMAIL=PORT = '587'\nEMAIL_USE_TLS = 'True'\nEMAIL_HOST_USER = 'aguerrerodev.web@gmail.com'\nEMAIL_HOST_PASSWORD = 'snvr tuie onlb ybpz'",
+        "detail": "ecommerce.ecommerce.settings",
+        "documentation": {}
+    },
+    {
+        "label": "EMAIL_HOST",
+        "kind": 5,
+        "importPath": "ecommerce.ecommerce.settings",
+        "description": "ecommerce.ecommerce.settings",
+        "peekOfCode": "EMAIL_HOST = 'smtp.gmail.com'\nEMAIL=PORT = '587'\nEMAIL_USE_TLS = 'True'\nEMAIL_HOST_USER = 'aguerrerodev.web@gmail.com'\nEMAIL_HOST_PASSWORD = 'snvr tuie onlb ybpz'",
+        "detail": "ecommerce.ecommerce.settings",
+        "documentation": {}
+    },
+    {
+        "label": "EMAIL=PORT",
+        "kind": 5,
+        "importPath": "ecommerce.ecommerce.settings",
+        "description": "ecommerce.ecommerce.settings",
+        "peekOfCode": "EMAIL=PORT = '587'\nEMAIL_USE_TLS = 'True'\nEMAIL_HOST_USER = 'aguerrerodev.web@gmail.com'\nEMAIL_HOST_PASSWORD = 'snvr tuie onlb ybpz'",
+        "detail": "ecommerce.ecommerce.settings",
+        "documentation": {}
+    },
+    {
+        "label": "EMAIL_USE_TLS",
+        "kind": 5,
+        "importPath": "ecommerce.ecommerce.settings",
+        "description": "ecommerce.ecommerce.settings",
+        "peekOfCode": "EMAIL_USE_TLS = 'True'\nEMAIL_HOST_USER = 'aguerrerodev.web@gmail.com'\nEMAIL_HOST_PASSWORD = 'snvr tuie onlb ybpz'",
+        "detail": "ecommerce.ecommerce.settings",
+        "documentation": {}
+    },
+    {
+        "label": "EMAIL_HOST_USER",
+        "kind": 5,
+        "importPath": "ecommerce.ecommerce.settings",
+        "description": "ecommerce.ecommerce.settings",
+        "peekOfCode": "EMAIL_HOST_USER = 'aguerrerodev.web@gmail.com'\nEMAIL_HOST_PASSWORD = 'snvr tuie onlb ybpz'",
+        "detail": "ecommerce.ecommerce.settings",
+        "documentation": {}
+    },
+    {
+        "label": "EMAIL_HOST_PASSWORD",
+        "kind": 5,
+        "importPath": "ecommerce.ecommerce.settings",
+        "description": "ecommerce.ecommerce.settings",
+        "peekOfCode": "EMAIL_HOST_PASSWORD = 'snvr tuie onlb ybpz'",
         "detail": "ecommerce.ecommerce.settings",
         "documentation": {}
     },
