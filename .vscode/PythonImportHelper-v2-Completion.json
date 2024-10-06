@@ -72,6 +72,14 @@
         "documentation": {}
     },
     {
+        "label": "User",
+        "importPath": "django.contrib.auth.models",
+        "description": "django.contrib.auth.models",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth.models",
+        "documentation": {}
+    },
+    {
         "label": "forms",
         "importPath": "django",
         "description": "django",
@@ -157,6 +165,22 @@
         "description": "django.test",
         "isExtraImport": true,
         "detail": "django.test",
+        "documentation": {}
+    },
+    {
+        "label": "PasswordResetTokenGenerator",
+        "importPath": "django.contrib.auth.tokens",
+        "description": "django.contrib.auth.tokens",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth.tokens",
+        "documentation": {}
+    },
+    {
+        "label": "six",
+        "importPath": "django.utils",
+        "description": "django.utils",
+        "isExtraImport": true,
+        "detail": "django.utils",
         "documentation": {}
     },
     {
@@ -253,6 +277,54 @@
         "description": "django.shortcuts",
         "isExtraImport": true,
         "detail": "django.shortcuts",
+        "documentation": {}
+    },
+    {
+        "label": "get_current_site",
+        "importPath": "django.contrib.sites.shortcuts",
+        "description": "django.contrib.sites.shortcuts",
+        "isExtraImport": true,
+        "detail": "django.contrib.sites.shortcuts",
+        "documentation": {}
+    },
+    {
+        "label": "render_to_string",
+        "importPath": "django.template.loader",
+        "description": "django.template.loader",
+        "isExtraImport": true,
+        "detail": "django.template.loader",
+        "documentation": {}
+    },
+    {
+        "label": "force_str",
+        "importPath": "django.utils.encoding",
+        "description": "django.utils.encoding",
+        "isExtraImport": true,
+        "detail": "django.utils.encoding",
+        "documentation": {}
+    },
+    {
+        "label": "force_bytes",
+        "importPath": "django.utils.encoding",
+        "description": "django.utils.encoding",
+        "isExtraImport": true,
+        "detail": "django.utils.encoding",
+        "documentation": {}
+    },
+    {
+        "label": "urlsafe_base64_decode",
+        "importPath": "django.utils.http",
+        "description": "django.utils.http",
+        "isExtraImport": true,
+        "detail": "django.utils.http",
+        "documentation": {}
+    },
+    {
+        "label": "urlsafe_base64_encode",
+        "importPath": "django.utils.http",
+        "description": "django.utils.http",
+        "isExtraImport": true,
+        "detail": "django.utils.http",
         "documentation": {}
     },
     {
@@ -385,8 +457,26 @@
         "kind": 6,
         "importPath": "ecommerce.account.forms",
         "description": "ecommerce.account.forms",
-        "peekOfCode": "class CreateUserForm(UserCreationForm):\n  class Meta:\n    model = User\n    fields = ['username', 'email', 'password1', 'password2']\n    def __init__(self, *args, **kwargs):\n      super(CreateUserForm, self).__init__(*args, **kwargs)\n      self.fields['email'].required = True\n    def clean_email(self):\n      email = self.cleaned_data.get('email')\n      if User.objects.filter(email=email).exists():",
+        "peekOfCode": "class CreateUserForm(UserCreationForm):\n  email = forms.EmailField(required=True)\n  class Meta:\n    model = User\n    fields = ['username', 'email', 'password1', 'password2']\n    def __init__(self, *args, **kwargs):\n      super(CreateUserForm, self).__init__(*args, **kwargs)\n      # self.fields['email'].required = True\n    def clean_email(self):\n      email = self.cleaned_data.get('email')",
         "detail": "ecommerce.account.forms",
+        "documentation": {}
+    },
+    {
+        "label": "UserVerificationTokenGenerator",
+        "kind": 6,
+        "importPath": "ecommerce.account.token",
+        "description": "ecommerce.account.token",
+        "peekOfCode": "class UserVerificationTokenGenerator(PasswordResetTokenGenerator):\n    def _make_hash_value(self, user, timestamp):\n        user_id = six.text_type(user.pk)\n        ts = six.text_type(timestamp)\n        is_active = six.text_type(user.is_active)\n        return f\"{user_id}{ts}{is_active}\"\nuser_tokenizer_generate = UserVerificationTokenGenerator()",
+        "detail": "ecommerce.account.token",
+        "documentation": {}
+    },
+    {
+        "label": "user_tokenizer_generate",
+        "kind": 5,
+        "importPath": "ecommerce.account.token",
+        "description": "ecommerce.account.token",
+        "peekOfCode": "user_tokenizer_generate = UserVerificationTokenGenerator()",
+        "detail": "ecommerce.account.token",
         "documentation": {}
     },
     {
@@ -394,7 +484,7 @@
         "kind": 5,
         "importPath": "ecommerce.account.urls",
         "description": "ecommerce.account.urls",
-        "peekOfCode": "urlpatterns = [\n  path('sign-up', views.sign_up, name='sign-up')\n]",
+        "peekOfCode": "urlpatterns = [\n  path('sign-up', views.sign_up, name='sign-up'),\n  # Email verification Url's \n  path('email-verification/<str:uidb64>/<str:token>/', views.email_verification, name='email-verification'),\n  path('email-verification-sent', views.email_verification_sent, name='email-verification-sent'),\n  path('email-verification-success', views.email_verification_success, name='email-verification-success'),\n  path('email-verification-failed', views.email_verification_failed, name='email-verification-failed'),\n]",
         "detail": "ecommerce.account.urls",
         "documentation": {}
     },
@@ -403,7 +493,43 @@
         "kind": 2,
         "importPath": "ecommerce.account.views",
         "description": "ecommerce.account.views",
-        "peekOfCode": "def sign_up(request):\n  form = CreateUserForm()\n  if request.method == 'POST':\n    form = CreateUserForm(request.POST)\n    if form.is_valid():\n      form.save()\n      return redirect('store')\n  context = { 'form': form }\n  return render(request, 'account/registration/sign-up.html', context)",
+        "peekOfCode": "def sign_up(request):\n  form = CreateUserForm()\n  if request.method == 'POST':\n    form = CreateUserForm(request.POST)\n    if form.is_valid():\n      user = form.save()\n      user.is_active = False\n      user.save()\n      # Email verification setup ( template )\n      current_site = get_current_site(request)",
+        "detail": "ecommerce.account.views",
+        "documentation": {}
+    },
+    {
+        "label": "email_verification",
+        "kind": 2,
+        "importPath": "ecommerce.account.views",
+        "description": "ecommerce.account.views",
+        "peekOfCode": "def email_verification(request, uidb64, token):\n  user_id = force_str(urlsafe_base64_decode(uidb64))\n  user = User.objects.get(pk=user_id)\n  if user and user_tokenizer_generate.check_token(user, token):\n    user.is_active = True   \n    user.save()\n    return redirect('email-verification-success')\n  else:\n    return redirect('email-verification-failed')\ndef email_verification_sent(request):",
+        "detail": "ecommerce.account.views",
+        "documentation": {}
+    },
+    {
+        "label": "email_verification_sent",
+        "kind": 2,
+        "importPath": "ecommerce.account.views",
+        "description": "ecommerce.account.views",
+        "peekOfCode": "def email_verification_sent(request):\n  return render(request, 'account/registration/email-verification-sent.html')\ndef email_verification_success(request):\n  return render(request, 'account/registration/email-verification-success.html')\ndef email_verification_failed(request):\n  return render(request, 'account/registration/email-verification-failed.html')",
+        "detail": "ecommerce.account.views",
+        "documentation": {}
+    },
+    {
+        "label": "email_verification_success",
+        "kind": 2,
+        "importPath": "ecommerce.account.views",
+        "description": "ecommerce.account.views",
+        "peekOfCode": "def email_verification_success(request):\n  return render(request, 'account/registration/email-verification-success.html')\ndef email_verification_failed(request):\n  return render(request, 'account/registration/email-verification-failed.html')",
+        "detail": "ecommerce.account.views",
+        "documentation": {}
+    },
+    {
+        "label": "email_verification_failed",
+        "kind": 2,
+        "importPath": "ecommerce.account.views",
+        "description": "ecommerce.account.views",
+        "peekOfCode": "def email_verification_failed(request):\n  return render(request, 'account/registration/email-verification-failed.html')",
         "detail": "ecommerce.account.views",
         "documentation": {}
     },
@@ -637,7 +763,7 @@
         "kind": 5,
         "importPath": "ecommerce.ecommerce.settings",
         "description": "ecommerce.ecommerce.settings",
-        "peekOfCode": "STATIC_URL = '/static/'\nSTATICFILES_DIRS = [BASE_DIR / 'static']\nMEDIA_URL = '/media/'\nMEDIA_ROOT = BASE_DIR / 'static/media'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'",
+        "peekOfCode": "STATIC_URL = '/static/'\nSTATICFILES_DIRS = [BASE_DIR / 'static']\nMEDIA_URL = '/media/'\nMEDIA_ROOT = BASE_DIR / 'static/media'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nEMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'",
         "detail": "ecommerce.ecommerce.settings",
         "documentation": {}
     },
@@ -646,7 +772,7 @@
         "kind": 5,
         "importPath": "ecommerce.ecommerce.settings",
         "description": "ecommerce.ecommerce.settings",
-        "peekOfCode": "STATICFILES_DIRS = [BASE_DIR / 'static']\nMEDIA_URL = '/media/'\nMEDIA_ROOT = BASE_DIR / 'static/media'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'",
+        "peekOfCode": "STATICFILES_DIRS = [BASE_DIR / 'static']\nMEDIA_URL = '/media/'\nMEDIA_ROOT = BASE_DIR / 'static/media'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nEMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'",
         "detail": "ecommerce.ecommerce.settings",
         "documentation": {}
     },
@@ -655,7 +781,7 @@
         "kind": 5,
         "importPath": "ecommerce.ecommerce.settings",
         "description": "ecommerce.ecommerce.settings",
-        "peekOfCode": "MEDIA_URL = '/media/'\nMEDIA_ROOT = BASE_DIR / 'static/media'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'",
+        "peekOfCode": "MEDIA_URL = '/media/'\nMEDIA_ROOT = BASE_DIR / 'static/media'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nEMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'",
         "detail": "ecommerce.ecommerce.settings",
         "documentation": {}
     },
@@ -664,7 +790,7 @@
         "kind": 5,
         "importPath": "ecommerce.ecommerce.settings",
         "description": "ecommerce.ecommerce.settings",
-        "peekOfCode": "MEDIA_ROOT = BASE_DIR / 'static/media'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'",
+        "peekOfCode": "MEDIA_ROOT = BASE_DIR / 'static/media'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nEMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'",
         "detail": "ecommerce.ecommerce.settings",
         "documentation": {}
     },
@@ -673,7 +799,16 @@
         "kind": 5,
         "importPath": "ecommerce.ecommerce.settings",
         "description": "ecommerce.ecommerce.settings",
-        "peekOfCode": "DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'",
+        "peekOfCode": "DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nEMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'",
+        "detail": "ecommerce.ecommerce.settings",
+        "documentation": {}
+    },
+    {
+        "label": "EMAIL_BACKEND",
+        "kind": 5,
+        "importPath": "ecommerce.ecommerce.settings",
+        "description": "ecommerce.ecommerce.settings",
+        "peekOfCode": "EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'",
         "detail": "ecommerce.ecommerce.settings",
         "documentation": {}
     },
