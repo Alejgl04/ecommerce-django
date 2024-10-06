@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from django import forms
 
 class CreateUserForm(UserCreationForm):
-  
+  email = forms.EmailField(required=True)
   class Meta:
     
     model = User
@@ -15,7 +15,7 @@ class CreateUserForm(UserCreationForm):
     def __init__(self, *args, **kwargs):
       super(CreateUserForm, self).__init__(*args, **kwargs)
       
-      self.fields['email'].required = True
+      # self.fields['email'].required = True
       
     
     def clean_email(self):
