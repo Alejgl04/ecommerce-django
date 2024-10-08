@@ -96,11 +96,35 @@
         "documentation": {}
     },
     {
-        "label": "forms",
-        "importPath": "django",
-        "description": "django",
+        "label": "authenticate",
+        "importPath": "django.contrib.auth",
+        "description": "django.contrib.auth",
         "isExtraImport": true,
-        "detail": "django",
+        "detail": "django.contrib.auth",
+        "documentation": {}
+    },
+    {
+        "label": "authenticate",
+        "importPath": "django.contrib.auth",
+        "description": "django.contrib.auth",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth",
+        "documentation": {}
+    },
+    {
+        "label": "login",
+        "importPath": "django.contrib.auth",
+        "description": "django.contrib.auth",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth",
+        "documentation": {}
+    },
+    {
+        "label": "logout",
+        "importPath": "django.contrib.auth",
+        "description": "django.contrib.auth",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth",
         "documentation": {}
     },
     {
@@ -117,6 +141,14 @@
         "description": "django.forms.widgets",
         "isExtraImport": true,
         "detail": "django.forms.widgets",
+        "documentation": {}
+    },
+    {
+        "label": "forms",
+        "importPath": "django",
+        "description": "django",
+        "isExtraImport": true,
+        "detail": "django",
         "documentation": {}
     },
     {
@@ -360,30 +392,6 @@
         "documentation": {}
     },
     {
-        "label": "authenticate",
-        "importPath": "django.contrib.auth",
-        "description": "django.contrib.auth",
-        "isExtraImport": true,
-        "detail": "django.contrib.auth",
-        "documentation": {}
-    },
-    {
-        "label": "login",
-        "importPath": "django.contrib.auth",
-        "description": "django.contrib.auth",
-        "isExtraImport": true,
-        "detail": "django.contrib.auth",
-        "documentation": {}
-    },
-    {
-        "label": "logout",
-        "importPath": "django.contrib.auth",
-        "description": "django.contrib.auth",
-        "isExtraImport": true,
-        "detail": "django.contrib.auth",
-        "documentation": {}
-    },
-    {
         "label": "login_required",
         "importPath": "django.contrib.auth.decorators",
         "description": "django.contrib.auth.decorators",
@@ -521,7 +529,7 @@
         "kind": 6,
         "importPath": "ecommerce.account.forms",
         "description": "ecommerce.account.forms",
-        "peekOfCode": "class CreateUserForm(UserCreationForm):\n  email = forms.EmailField(required=True)\n  class Meta:\n    model = User\n    fields = ['username', 'email', 'password1', 'password2']\n    def __init__(self, *args, **kwargs):\n      super(CreateUserForm, self).__init__(*args, **kwargs)\n      # self.fields['email'].required = True\n    def clean_email(self):\n      email = self.cleaned_data.get('email')",
+        "peekOfCode": "class CreateUserForm(UserCreationForm):\n  def __init__(self, *args, **kwargs):\n    super(CreateUserForm, self).__init__(*args, **kwargs)\n    self.fields['email'].required = True\n  class Meta:\n    model = User\n    fields = ['username', 'email', 'password1', 'password2']\n    def clean_email(self):\n      email = self.cleaned_data.get('email')\n      if User.objects.filter(email=email).exists():",
         "detail": "ecommerce.account.forms",
         "documentation": {}
     },
@@ -530,7 +538,16 @@
         "kind": 6,
         "importPath": "ecommerce.account.forms",
         "description": "ecommerce.account.forms",
-        "peekOfCode": "class SignInForm(AuthenticationForm):\n  username = forms.CharField(widget=TextInput())\n  password = forms.CharField(widget=PasswordInput())",
+        "peekOfCode": "class SignInForm(AuthenticationForm):\n  username = forms.CharField(widget=TextInput())\n  password = forms.CharField(widget=PasswordInput())\n  def clean(self):\n    username = self.cleaned_data.get('username')\n    password = self.cleaned_data.get('password')\n    user = authenticate(username=username, password=password)\n    if not user or not user.is_active:\n      raise forms.ValidationError(\"Sorry, that credentials was invalid. Please try again.\")\n    return self.cleaned_data",
+        "detail": "ecommerce.account.forms",
+        "documentation": {}
+    },
+    {
+        "label": "UpdateUserForm",
+        "kind": 6,
+        "importPath": "ecommerce.account.forms",
+        "description": "ecommerce.account.forms",
+        "peekOfCode": "class UpdateUserForm(forms.ModelForm):\n  password = None\n  def __init__(self, *args, **kwargs):\n    super(UpdateUserForm, self).__init__(*args, **kwargs)\n    self.fields['email'].required = True\n  class Meta:\n    model = User\n    fields = ['username', 'email']\n    exclude = ['password1', 'password1']",
         "detail": "ecommerce.account.forms",
         "documentation": {}
     },
@@ -557,7 +574,7 @@
         "kind": 5,
         "importPath": "ecommerce.account.urls",
         "description": "ecommerce.account.urls",
-        "peekOfCode": "urlpatterns = [\n  path('sign-up', views.sign_up, name='sign-up'),\n  path('sign-in', views.sign_in, name='sign-in'),\n  path('sign-out', views.sign_out, name='sign-out'),\n  path('dashboard', views.dashboard, name='dashboard'),\n  # Email verification Url's \n  path('email-verification/<str:uidb64>/<str:token>/', views.email_verification, name='email-verification'),\n  path('email-verification-sent', views.email_verification_sent, name='email-verification-sent'),\n  path('email-verification-success', views.email_verification_success, name='email-verification-success'),\n  path('email-verification-failed', views.email_verification_failed, name='email-verification-failed'),",
+        "peekOfCode": "urlpatterns = [\n  path('sign-up', views.sign_up, name='sign-up'),\n  path('sign-in', views.sign_in, name='sign-in'),\n  path('sign-out', views.sign_out, name='sign-out'),\n  # Dashboard / profile \n  path('dashboard', views.dashboard, name='dashboard'),\n  path('profile-management', views.profile_management, name='profile-management'),\n  path('delete-account', views.delete_account, name='delete-account'),\n  # Email verification Url's \n  path('email-verification/<str:uidb64>/<str:token>/', views.email_verification, name='email-verification'),",
         "detail": "ecommerce.account.urls",
         "documentation": {}
     },
@@ -620,7 +637,7 @@
         "kind": 2,
         "importPath": "ecommerce.account.views",
         "description": "ecommerce.account.views",
-        "peekOfCode": "def sign_out(request):\n  auth.logout(request)\n  return redirect('store')\n@login_required(login_url='sign-in')\ndef dashboard(request):\n  return render(request, 'account/dashboard.html')",
+        "peekOfCode": "def sign_out(request):\n  auth.logout(request)\n  return redirect('store')\n@login_required(login_url='sign-in')\ndef dashboard(request):\n  return render(request, 'account/dashboard.html')\n@login_required(login_url='sign-in')\ndef profile_management(request):\n  #Update email and username  \n  if request.method == 'POST':",
         "detail": "ecommerce.account.views",
         "documentation": {}
     },
@@ -629,7 +646,25 @@
         "kind": 2,
         "importPath": "ecommerce.account.views",
         "description": "ecommerce.account.views",
-        "peekOfCode": "def dashboard(request):\n  return render(request, 'account/dashboard.html')",
+        "peekOfCode": "def dashboard(request):\n  return render(request, 'account/dashboard.html')\n@login_required(login_url='sign-in')\ndef profile_management(request):\n  #Update email and username  \n  if request.method == 'POST':\n    user_form = UpdateUserForm(request.POST, instance=request.user)\n    if user_form.is_valid():\n      user_form.save()\n      return redirect('dashboard')",
+        "detail": "ecommerce.account.views",
+        "documentation": {}
+    },
+    {
+        "label": "profile_management",
+        "kind": 2,
+        "importPath": "ecommerce.account.views",
+        "description": "ecommerce.account.views",
+        "peekOfCode": "def profile_management(request):\n  #Update email and username  \n  if request.method == 'POST':\n    user_form = UpdateUserForm(request.POST, instance=request.user)\n    if user_form.is_valid():\n      user_form.save()\n      return redirect('dashboard')\n  user_form = UpdateUserForm(instance=request.user)\n  context = {'user_form': user_form}\n  return render(request, 'account/profile-management.html', context)",
+        "detail": "ecommerce.account.views",
+        "documentation": {}
+    },
+    {
+        "label": "delete_account",
+        "kind": 2,
+        "importPath": "ecommerce.account.views",
+        "description": "ecommerce.account.views",
+        "peekOfCode": "def delete_account(request):\n  user = User.objects.get(id=request.user.id)\n  if request.method == 'POST':\n    user.delete()\n    return redirect('store')\n  return render(request, 'account/delete-account.html')",
         "detail": "ecommerce.account.views",
         "documentation": {}
     },
