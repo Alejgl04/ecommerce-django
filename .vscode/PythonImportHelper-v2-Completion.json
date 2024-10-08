@@ -64,6 +64,14 @@
         "documentation": {}
     },
     {
+        "label": "AuthenticationForm",
+        "importPath": "django.contrib.auth.forms",
+        "description": "django.contrib.auth.forms",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth.forms",
+        "documentation": {}
+    },
+    {
         "label": "User",
         "importPath": "django.contrib.auth.models",
         "description": "django.contrib.auth.models",
@@ -73,6 +81,14 @@
     },
     {
         "label": "User",
+        "importPath": "django.contrib.auth.models",
+        "description": "django.contrib.auth.models",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth.models",
+        "documentation": {}
+    },
+    {
+        "label": "auth",
         "importPath": "django.contrib.auth.models",
         "description": "django.contrib.auth.models",
         "isExtraImport": true,
@@ -85,6 +101,22 @@
         "description": "django",
         "isExtraImport": true,
         "detail": "django",
+        "documentation": {}
+    },
+    {
+        "label": "PasswordInput",
+        "importPath": "django.forms.widgets",
+        "description": "django.forms.widgets",
+        "isExtraImport": true,
+        "detail": "django.forms.widgets",
+        "documentation": {}
+    },
+    {
+        "label": "TextInput",
+        "importPath": "django.forms.widgets",
+        "description": "django.forms.widgets",
+        "isExtraImport": true,
+        "detail": "django.forms.widgets",
         "documentation": {}
     },
     {
@@ -328,6 +360,38 @@
         "documentation": {}
     },
     {
+        "label": "authenticate",
+        "importPath": "django.contrib.auth",
+        "description": "django.contrib.auth",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth",
+        "documentation": {}
+    },
+    {
+        "label": "login",
+        "importPath": "django.contrib.auth",
+        "description": "django.contrib.auth",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth",
+        "documentation": {}
+    },
+    {
+        "label": "logout",
+        "importPath": "django.contrib.auth",
+        "description": "django.contrib.auth",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth",
+        "documentation": {}
+    },
+    {
+        "label": "login_required",
+        "importPath": "django.contrib.auth.decorators",
+        "description": "django.contrib.auth.decorators",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth.decorators",
+        "documentation": {}
+    },
+    {
         "label": "Decimal",
         "importPath": "decimal",
         "description": "decimal",
@@ -462,6 +526,15 @@
         "documentation": {}
     },
     {
+        "label": "SignInForm",
+        "kind": 6,
+        "importPath": "ecommerce.account.forms",
+        "description": "ecommerce.account.forms",
+        "peekOfCode": "class SignInForm(AuthenticationForm):\n  username = forms.CharField(widget=TextInput())\n  password = forms.CharField(widget=PasswordInput())",
+        "detail": "ecommerce.account.forms",
+        "documentation": {}
+    },
+    {
         "label": "UserVerificationTokenGenerator",
         "kind": 6,
         "importPath": "ecommerce.account.token",
@@ -484,7 +557,7 @@
         "kind": 5,
         "importPath": "ecommerce.account.urls",
         "description": "ecommerce.account.urls",
-        "peekOfCode": "urlpatterns = [\n  path('sign-up', views.sign_up, name='sign-up'),\n  # Email verification Url's \n  path('email-verification/<str:uidb64>/<str:token>/', views.email_verification, name='email-verification'),\n  path('email-verification-sent', views.email_verification_sent, name='email-verification-sent'),\n  path('email-verification-success', views.email_verification_success, name='email-verification-success'),\n  path('email-verification-failed', views.email_verification_failed, name='email-verification-failed'),\n]",
+        "peekOfCode": "urlpatterns = [\n  path('sign-up', views.sign_up, name='sign-up'),\n  path('sign-in', views.sign_in, name='sign-in'),\n  path('sign-out', views.sign_out, name='sign-out'),\n  path('dashboard', views.dashboard, name='dashboard'),\n  # Email verification Url's \n  path('email-verification/<str:uidb64>/<str:token>/', views.email_verification, name='email-verification'),\n  path('email-verification-sent', views.email_verification_sent, name='email-verification-sent'),\n  path('email-verification-success', views.email_verification_success, name='email-verification-success'),\n  path('email-verification-failed', views.email_verification_failed, name='email-verification-failed'),",
         "detail": "ecommerce.account.urls",
         "documentation": {}
     },
@@ -511,7 +584,7 @@
         "kind": 2,
         "importPath": "ecommerce.account.views",
         "description": "ecommerce.account.views",
-        "peekOfCode": "def email_verification_sent(request):\n  return render(request, 'account/registration/email-verification-sent.html')\ndef email_verification_success(request):\n  return render(request, 'account/registration/email-verification-success.html')\ndef email_verification_failed(request):\n  return render(request, 'account/registration/email-verification-failed.html')",
+        "peekOfCode": "def email_verification_sent(request):\n  return render(request, 'account/registration/email-verification-sent.html')\ndef email_verification_success(request):\n  return render(request, 'account/registration/email-verification-success.html')\ndef email_verification_failed(request):\n  return render(request, 'account/registration/email-verification-failed.html')\ndef sign_in(request):\n  form = SignInForm()\n  if request.method == 'POST':",
         "detail": "ecommerce.account.views",
         "documentation": {}
     },
@@ -520,7 +593,7 @@
         "kind": 2,
         "importPath": "ecommerce.account.views",
         "description": "ecommerce.account.views",
-        "peekOfCode": "def email_verification_success(request):\n  return render(request, 'account/registration/email-verification-success.html')\ndef email_verification_failed(request):\n  return render(request, 'account/registration/email-verification-failed.html')",
+        "peekOfCode": "def email_verification_success(request):\n  return render(request, 'account/registration/email-verification-success.html')\ndef email_verification_failed(request):\n  return render(request, 'account/registration/email-verification-failed.html')\ndef sign_in(request):\n  form = SignInForm()\n  if request.method == 'POST':\n    form = SignInForm(request, data=request.POST)\n    if form.is_valid():",
         "detail": "ecommerce.account.views",
         "documentation": {}
     },
@@ -529,7 +602,34 @@
         "kind": 2,
         "importPath": "ecommerce.account.views",
         "description": "ecommerce.account.views",
-        "peekOfCode": "def email_verification_failed(request):\n  return render(request, 'account/registration/email-verification-failed.html')",
+        "peekOfCode": "def email_verification_failed(request):\n  return render(request, 'account/registration/email-verification-failed.html')\ndef sign_in(request):\n  form = SignInForm()\n  if request.method == 'POST':\n    form = SignInForm(request, data=request.POST)\n    if form.is_valid():\n      username = request.POST.get('username')\n      password = request.POST.get('password')\n      user = authenticate(request, username=username, password=password)",
+        "detail": "ecommerce.account.views",
+        "documentation": {}
+    },
+    {
+        "label": "sign_in",
+        "kind": 2,
+        "importPath": "ecommerce.account.views",
+        "description": "ecommerce.account.views",
+        "peekOfCode": "def sign_in(request):\n  form = SignInForm()\n  if request.method == 'POST':\n    form = SignInForm(request, data=request.POST)\n    if form.is_valid():\n      username = request.POST.get('username')\n      password = request.POST.get('password')\n      user = authenticate(request, username=username, password=password)\n      if user is not None:\n        auth.login( request, user )",
+        "detail": "ecommerce.account.views",
+        "documentation": {}
+    },
+    {
+        "label": "sign_out",
+        "kind": 2,
+        "importPath": "ecommerce.account.views",
+        "description": "ecommerce.account.views",
+        "peekOfCode": "def sign_out(request):\n  auth.logout(request)\n  return redirect('store')\n@login_required(login_url='sign-in')\ndef dashboard(request):\n  return render(request, 'account/dashboard.html')",
+        "detail": "ecommerce.account.views",
+        "documentation": {}
+    },
+    {
+        "label": "dashboard",
+        "kind": 2,
+        "importPath": "ecommerce.account.views",
+        "description": "ecommerce.account.views",
+        "peekOfCode": "def dashboard(request):\n  return render(request, 'account/dashboard.html')",
         "detail": "ecommerce.account.views",
         "documentation": {}
     },
