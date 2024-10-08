@@ -11,7 +11,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
 from .token import user_tokenizer_generate
-from .forms import CreateUserForm, SignInForm
+from .forms import CreateUserForm, SignInForm, UpdateUserForm
 
 # Create your views here.
 
@@ -123,3 +123,38 @@ def sign_out(request):
 @login_required(login_url='sign-in')
 def dashboard(request):
   return render(request, 'account/dashboard.html')
+
+
+@login_required(login_url='sign-in')
+def profile_management(request):
+  
+  #Update email and username  
+  
+  if request.method == 'POST':
+    user_form = UpdateUserForm(request.POST, instance=request.user)
+    
+    if user_form.is_valid():
+      
+      user_form.save()
+  
+      return redirect('dashboard')
+  
+  user_form = UpdateUserForm(instance=request.user)
+  
+  context = {'user_form': user_form}
+  
+  return render(request, 'account/profile-management.html', context)
+
+
+@login_required(login_url='sign-in')
+def delete_account(request):
+  
+  user = User.objects.get(id=request.user.id)
+  
+  if request.method == 'POST':
+    
+    user.delete()
+    
+    return redirect('store')
+    
+  return render(request, 'account/delete-account.html')
