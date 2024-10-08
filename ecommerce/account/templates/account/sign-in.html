@@ -20,9 +20,15 @@
             {{ form.username|as_crispy_field }}
             <br>
             {{ form.password|as_crispy_field }}
-              
-            <br>
-            <button type="submit" class="btn btn-secondary btn-lg w-100 btn-block p-2"> Submit</button>
+            
+            {% if form.non_field_errors %}
+              <ul class='form-errors mt-2'>
+                  {% for error in form.non_field_errors %}
+                      <li class="text-danger">{{ error }}</li>
+                  {% endfor %}
+              </ul>
+            {% endif %}
+            <button type="submit" class="btn btn-secondary btn-lg w-100 btn-block p-2 mt-4"> Submit</button>
           </form>
         </div>
       </div>
