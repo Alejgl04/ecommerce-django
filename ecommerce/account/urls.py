@@ -9,8 +9,15 @@ urlpatterns = [
   path('sign-in', views.sign_in, name='sign-in'),
   
   path('sign-out', views.sign_out, name='sign-out'),
+  
+  # Dashboard / profile 
  
   path('dashboard', views.dashboard, name='dashboard'),
+  
+  path('profile-management', views.profile_management, name='profile-management'),
+  
+  path('delete-account', views.delete_account, name='delete-account'),
+  
   
   # Email verification Url's 
  
@@ -21,5 +28,7 @@ urlpatterns = [
   path('email-verification-success', views.email_verification_success, name='email-verification-success'),
   
   path('email-verification-failed', views.email_verification_failed, name='email-verification-failed'),
+  
+  
   
 ]
