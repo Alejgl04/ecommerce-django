@@ -5,10 +5,13 @@ from django.template.loader import render_to_string
 from django.utils.encoding import force_str, force_bytes
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, auth
+
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 
 from .token import user_tokenizer_generate
-from .forms import CreateUserForm
+from .forms import CreateUserForm, SignInForm
 
 # Create your views here.
 
@@ -77,7 +80,6 @@ def email_verification_sent(request):
   return render(request, 'account/registration/email-verification-sent.html')
 
 
-
 def email_verification_success(request):
   
   return render(request, 'account/registration/email-verification-success.html')
@@ -87,3 +89,37 @@ def email_verification_failed(request):
   
   return render(request, 'account/registration/email-verification-failed.html')
 
+
+def sign_in(request):
+  
+  form = SignInForm()
+  
+  if request.method == 'POST':
+    
+    form = SignInForm(request, data=request.POST)
+    
+    if form.is_valid():
+      
+      username = request.POST.get('username')
+      password = request.POST.get('password')
+
+      user = authenticate(request, username=username, password=password)
+      
+      if user is not None:
+        auth.login( request, user )
+        return redirect('dashboard')
+  
+  context = { 'form': form }
+  return render(request, 'account/sign-in.html', context=context)
+
+
+def sign_out(request):
+  
+  auth.logout(request)
+  
+  return redirect('store')
+  
+
+@login_required(login_url='sign-in')
+def dashboard(request):
+  return render(request, 'account/dashboard.html')
