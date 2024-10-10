@@ -8,16 +8,33 @@
   margin-right: 0.2rem;
 }
 
+.nav-subtitle {
+  display: flex !important;
+  justify-content: space-around !important;
+  flex-direction: row;
+}
 
 @media (max-width: 578px) {
   .form-layout {
     width: 90%!important;
   }
 }
+
 @media (min-width: 768px) {
   .h-middle-screen {
     height: 270px!important;
   }
+}
+
+@media (max-width: 991px) {
+  .nav-subtitle {
+    display: flex !important;
+    flex-direction: column;
+  }
+  .nav-subtitle div form input {
+    margin-bottom: 1rem;
+  }
+
 }
 
 @media (min-width: 1200px) {

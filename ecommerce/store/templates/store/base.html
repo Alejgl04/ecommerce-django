@@ -79,7 +79,7 @@
         </li>
       {% endif %}
       &nbsp; &nbsp; &nbsp;
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a type="button" role="button" href="{% url 'cart-summary' %}" class="btn btn-outline-secondary">
           <i class="fa fa-shopping-cart" aria-hidden="true"> </i>
           &nbsp;
@@ -99,8 +99,52 @@
 
           </div>
         </a>
+      </li> -->
+    </ul>
+  </div>
+</nav>
+
+
+<nav class="navbar navbar-expand-lg bg-light-subtle nav-subtitle">
+
+  <div class="col-md-4">
+    <form action="">
+      <input type="search" class="form-control" placeholder="Search...">
+    </form>
+  </div>
+  <div>
+    <ul class="navbar-nav d-flex flex-row gap-2">
+      <li class="nav-item">
+        <a type="button" role="button" href="{% url 'cart-summary' %}" class="btn btn-outline-secondary" style="font-size:1rem">
+          <i class="fa fa-shopping-cart" aria-hidden="true"> </i>
+          <div id="cart-qty" class="d-inline-flex">
+
+            {% with qty_amount=cart|length %}
+
+              {% if qty_amount > 0 %}
+
+                {{ qty_amount }}
+
+                {% else %}
+                  0
+              {% endif %}
+
+            {% endwith %}
+
+          </div>
+        </a>
       </li>
-      &nbsp; &nbsp; &nbsp;
+      <li class="nav-item">
+        <a type="button" role="button" href="{% url 'cart-summary' %}" class="btn btn-outline-secondary" style="font-size:1rem">
+          <i class="fa fa-headphones"></i>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a type="button" role="button" href="{% url 'cart-summary' %}" class="btn btn-outline-secondary" style="font-size:1rem">
+          <i class="fa fa-globe"></i>
+        </a>
+      </li>
+      
     </ul>
   </div>
 </nav>

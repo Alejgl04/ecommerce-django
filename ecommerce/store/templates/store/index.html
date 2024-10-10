@@ -4,15 +4,13 @@
 
 {% block content %}
 <section class="text-center container">
-  <div class="row py-lg-5">
+  <div class="row mt-5">
     <div class="col-lg-6 col-md-8 mx-auto">
       <h1 class="h3"> Mc. CartFashion - <small>The finest and the most affordable.</small> </h1>
-      <br>
       <p class="lead text-muted">
         Browse our extensive collection.
       </p>
-      <br>
-      <a href="{% url 'sign-up' %}" class="btn btn-primary my-2"> Create an account </a>
+      <a href="{% url 'sign-up' %}" class="btn btn-primary"> Create an account </a>
     </div>
   </div>
 </section>
@@ -22,7 +20,6 @@
     <div class="container">
       <div class="pb-3 h5"> All products </div>
       <hr>
-      <br>
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-3">
         {% for product in all_products  %}
           
