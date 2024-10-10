@@ -55,13 +55,29 @@
 
   <div class="collapse navbar-collapse text-center" id="navbarNavDropdown">
     <ul class="navbar-nav ms-auto">
+
+      {% if user.is_authenticated %}
+        
       <li class="nav-item">
-        <a class="btn btn-alert navbar-btn text-white" type="button" href="{% url 'sign-up' %}"> Sign up </a>
+        <a class="btn btn-alert mr-btn-1 navbar-btn text-white" type="button" href="{% url 'dashboard' %}"> Dashboard </a>
       </li>
 
-      <li class="nav-item">
-        <a class="btn btn-alert navbar-btn text-white" type="button" href="{% url 'sign-in' %}"> Sign in </a>
-      </li>
+      {% else %}
+        <a class="btn btn-alert mr-btn-1 navbar-btn text-white" type="button" href="{% url 'sign-up' %}"> Sign up </a>
+
+      {% endif %}
+
+      
+      {% if user.is_authenticated %}
+
+        <li class="nav-item">
+          <a class="btn btn-alert navbar-btn text-white" type="button" href="{% url 'sign-out' %}"> Sign out </a>
+        </li>
+      {% else %}
+        <li class="nav-item">
+          <a class="btn btn-alert navbar-btn text-white" type="button" href="{% url 'sign-in' %}"> Sign in </a>
+        </li>
+      {% endif %}
       &nbsp; &nbsp; &nbsp;
       <li class="nav-item">
         <a type="button" role="button" href="{% url 'cart-summary' %}" class="btn btn-outline-secondary">

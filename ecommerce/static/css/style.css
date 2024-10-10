@@ -4,6 +4,11 @@
   width: 36rem!important;
 }
 
+.mr-btn-1 {
+  margin-right: 0.2rem;
+}
+
+
 @media (max-width: 578px) {
   .form-layout {
     width: 90%!important;
