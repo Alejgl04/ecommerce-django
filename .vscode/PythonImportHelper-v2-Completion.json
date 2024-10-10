@@ -546,7 +546,7 @@
         "kind": 6,
         "importPath": "ecommerce.account.forms",
         "description": "ecommerce.account.forms",
-        "peekOfCode": "class SignInForm(AuthenticationForm):\n  username = forms.CharField(widget=TextInput())\n  password = forms.CharField(widget=PasswordInput())\n  def clean(self):\n    username = self.cleaned_data.get('username')\n    password = self.cleaned_data.get('password')\n    user = authenticate(username=username, password=password)\n    if not user or not user.is_active:\n      raise forms.ValidationError(\"Sorry, that credentials was invalid. Please try again.\")\n    return self.cleaned_data",
+        "peekOfCode": "class SignInForm(AuthenticationForm):\n  username = forms.CharField(widget=TextInput())\n  password = forms.CharField(widget=PasswordInput())\nclass UpdateUserForm(forms.ModelForm):\n  password = None\n  class Meta:\n    model = User\n    fields = ['username', 'email']\n    exclude = ['password1', 'password1']\n  def __init__(self, *args, **kwargs):",
         "detail": "ecommerce.account.forms",
         "documentation": {}
     },
@@ -645,7 +645,7 @@
         "kind": 2,
         "importPath": "ecommerce.account.views",
         "description": "ecommerce.account.views",
-        "peekOfCode": "def sign_out(request):\n  auth.logout(request)\n  return redirect('store')\n@login_required(login_url='sign-in')\ndef dashboard(request):\n  return render(request, 'account/dashboard.html')\n@login_required(login_url='sign-in')\ndef profile_management(request):\n  #Update email and username  \n  user_form = UpdateUserForm(instance=request.user)",
+        "peekOfCode": "def sign_out(request):\n  try:\n    for key in list(request.session.keys()):\n      if key == 'session_key':\n        continue\n      else:\n        del request.session[key]\n  except KeyError:\n    pass\n  # auth.logout(request)",
         "detail": "ecommerce.account.views",
         "documentation": {}
     },

@@ -115,7 +115,20 @@ def sign_in(request):
 
 def sign_out(request):
   
-  auth.logout(request)
+  try:
+    for key in list(request.session.keys()):
+    
+      if key == 'session_key':
+      
+        continue
+      
+      else:
+      
+        del request.session[key]
+        
+  except KeyError:
+    pass
+  # auth.logout(request)
   
   return redirect('store')
   
