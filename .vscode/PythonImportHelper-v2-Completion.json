@@ -8,6 +8,14 @@
         "documentation": {}
     },
     {
+        "label": "messages",
+        "importPath": "django.contrib",
+        "description": "django.contrib",
+        "isExtraImport": true,
+        "detail": "django.contrib",
+        "documentation": {}
+    },
+    {
         "label": "admin",
         "importPath": "django.contrib",
         "description": "django.contrib",
@@ -663,7 +671,7 @@
         "kind": 2,
         "importPath": "ecommerce.account.views",
         "description": "ecommerce.account.views",
-        "peekOfCode": "def profile_management(request):\n  #Update email and username  \n  user_form = UpdateUserForm(instance=request.user)\n  if request.method == 'POST':\n    user_form = UpdateUserForm(request.POST, instance=request.user)\n    if user_form.is_valid():\n      user_form.save()\n      return redirect('dashboard')\n  context = {'user_form': user_form}\n  return render(request, 'account/profile-management.html', context)",
+        "peekOfCode": "def profile_management(request):\n  #Update email and username  \n  user_form = UpdateUserForm(instance=request.user)\n  if request.method == 'POST':\n    user_form = UpdateUserForm(request.POST, instance=request.user)\n    if user_form.is_valid():\n      user_form.save()\n      messages.info(request, 'Account updated')\n      return redirect('dashboard')\n  context = {'user_form': user_form}",
         "detail": "ecommerce.account.views",
         "documentation": {}
     },
@@ -672,7 +680,7 @@
         "kind": 2,
         "importPath": "ecommerce.account.views",
         "description": "ecommerce.account.views",
-        "peekOfCode": "def delete_account(request):\n  user = User.objects.get(id=request.user.id)\n  if request.method == 'POST':\n    user.delete()\n    return redirect('store')\n  return render(request, 'account/delete-account.html')",
+        "peekOfCode": "def delete_account(request):\n  user = User.objects.get(id=request.user.id)\n  if request.method == 'POST':\n    user.delete()\n    messages.error(request, 'Account deleted')\n    return redirect('store')\n  return render(request, 'account/delete-account.html')",
         "detail": "ecommerce.account.views",
         "documentation": {}
     },
