@@ -104,6 +104,14 @@
         "documentation": {}
     },
     {
+        "label": "views",
+        "importPath": "django.contrib.auth",
+        "description": "django.contrib.auth",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth",
+        "documentation": {}
+    },
+    {
         "label": "authenticate",
         "importPath": "django.contrib.auth",
         "description": "django.contrib.auth",
