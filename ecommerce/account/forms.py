@@ -40,18 +40,6 @@ class SignInForm(AuthenticationForm):
   username = forms.CharField(widget=TextInput())
   password = forms.CharField(widget=PasswordInput())
   
-  def clean(self):
-    username = self.cleaned_data.get('username')
-    password = self.cleaned_data.get('password')
-    
-    user = authenticate(username=username, password=password)
-    
-    if not user or not user.is_active:
-    
-      raise forms.ValidationError("Sorry, that credentials was invalid. Please try again.")
-    
-    return self.cleaned_data
-
 
 class UpdateUserForm(forms.ModelForm):
   password = None

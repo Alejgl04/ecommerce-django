@@ -21,13 +21,12 @@
             <br>
             {{ form.password|as_crispy_field }}
             
-            {% if form.non_field_errors %}
-              <ul class='form-errors mt-2'>
-                  {% for error in form.non_field_errors %}
-                      <li class="text-danger">{{ error }}</li>
-                  {% endfor %}
-              </ul>
-            {% endif %}
+            <div class="text-danger mt-1">
+
+              {{form.non_field_errors }}
+            
+            </div>
+              
             <button type="submit" class="btn btn-secondary btn-lg w-100 btn-block p-2 mt-4"> Sign in </button>
           </form>
           <div class="d-flex justify-content-between mt-2">
