@@ -21,139 +21,140 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
   </head>
 
-<nav class="navbar navbar-expand-lg bg-primary justify-content-center">
-  <a class="navbar-brand main-heading text-white" href="{% url 'store' %}">
-    &nbsp; &nbsp; Mc. CartFashion
-  </a>
+  <nav class="navbar navbar-expand-lg bg-primary justify-content-center">
+    <a class="navbar-brand main-heading text-white" href="{% url 'store' %}">
+      &nbsp; &nbsp; Mc. CartFashion
+    </a>
 
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-  <div class="collapse navbar-collapse" id="navbarCollapse">
+    <div class="collapse navbar-collapse" id="navbarCollapse">
 
-    <ul class="navbar-nav me-auto mb-2 mb-md-0">
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
-          data-bs-toggle="dropdown" aria-expanded="false">
-          Categories
-        </a>
-        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <li>
-            <a class="dropdown-item" href="{% url 'store' %}"> All </a>
-          </li>
-          {% for category in all_categories %}
+      <ul class="navbar-nav me-auto mb-2 mb-md-0">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            Categories
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li>
-              <a class="dropdown-item" href="{{ category.get_absolute_url }}"> {{ category.name | capfirst }} </a>
+              <a class="dropdown-item" href="{% url 'store' %}"> All </a>
             </li>
-          {% endfor %}
-        </ul>
-      </li>
-    </ul>
-  </div>
+            {% for category in all_categories %}
+              <li>
+                <a class="dropdown-item" href="{{ category.get_absolute_url }}"> {{ category.name | capfirst }} </a>
+              </li>
+            {% endfor %}
+          </ul>
+        </li>
+      </ul>
+    </div>
 
-  <div class="collapse navbar-collapse text-center" id="navbarNavDropdown">
-    <ul class="navbar-nav ms-auto">
+    <div class="collapse navbar-collapse text-center" id="navbarNavDropdown">
+      <ul class="navbar-nav ms-auto">
 
-      {% if user.is_authenticated %}
+        {% if user.is_authenticated %}
+          
+        <li class="nav-item">
+          <a class="btn btn-alert mr-btn-1 navbar-btn text-white" type="button" href="{% url 'dashboard' %}"> Dashboard </a>
+        </li>
+
+        {% else %}
+          <a class="btn btn-alert mr-btn-1 navbar-btn text-white" type="button" href="{% url 'sign-up' %}"> Sign up </a>
+
+        {% endif %}
+
         
-      <li class="nav-item">
-        <a class="btn btn-alert mr-btn-1 navbar-btn text-white" type="button" href="{% url 'dashboard' %}"> Dashboard </a>
-      </li>
+        {% if user.is_authenticated %}
 
-      {% else %}
-        <a class="btn btn-alert mr-btn-1 navbar-btn text-white" type="button" href="{% url 'sign-up' %}"> Sign up </a>
+          <li class="nav-item">
+            <a class="btn btn-alert navbar-btn text-white" type="button" href="{% url 'sign-out' %}"> Sign out </a>
+          </li>
+        {% else %}
+          <li class="nav-item">
+            <a class="btn btn-alert navbar-btn text-white" type="button" href="{% url 'sign-in' %}"> Sign in </a>
+          </li>
+        {% endif %}
+        &nbsp; &nbsp; &nbsp;
+      </ul>
+    </div>
+  </nav>
 
-      {% endif %}
+  <nav class="navbar navbar-expand-lg bg-light-subtle nav-subtitle">
 
-      
-      {% if user.is_authenticated %}
-
+    <div class="col-md-4">
+      <form action="">
+        <input type="search" class="form-control" placeholder="Search...">
+      </form>
+    </div>
+    <div>
+      <ul class="navbar-nav d-flex flex-row gap-2">
         <li class="nav-item">
-          <a class="btn btn-alert navbar-btn text-white" type="button" href="{% url 'sign-out' %}"> Sign out </a>
+          <a type="button" role="button" href="{% url 'cart-summary' %}" class="btn btn-outline-secondary" style="font-size:1rem">
+            <i class="fa fa-shopping-cart" aria-hidden="true"> </i>
+            <div id="cart-qty" class="d-inline-flex">
+
+              {% with qty_amount=cart|length %}
+
+                {% if qty_amount > 0 %}
+
+                  {{ qty_amount }}
+
+                  {% else %}
+                    0
+                {% endif %}
+
+              {% endwith %}
+
+            </div>
+          </a>
         </li>
-      {% else %}
         <li class="nav-item">
-          <a class="btn btn-alert navbar-btn text-white" type="button" href="{% url 'sign-in' %}"> Sign in </a>
+          <a type="button" role="button" href="{% url 'cart-summary' %}" class="btn btn-outline-secondary" style="font-size:1rem">
+            <i class="fa fa-headphones"></i>
+          </a>
         </li>
-      {% endif %}
-      &nbsp; &nbsp; &nbsp;
-      <!-- <li class="nav-item">
-        <a type="button" role="button" href="{% url 'cart-summary' %}" class="btn btn-outline-secondary">
-          <i class="fa fa-shopping-cart" aria-hidden="true"> </i>
-          &nbsp;
-          <div id="cart-qty" class="d-inline-flex">
+        <li class="nav-item">
+          <a type="button" role="button" href="{% url 'cart-summary' %}" class="btn btn-outline-secondary" style="font-size:1rem">
+            <i class="fa fa-globe"></i>
+          </a>
+        </li>
+        
+      </ul>
+    </div>
+  </nav>
 
-            {% with qty_amount=cart|length %}
+  {% for message in messages %}
 
-              {% if qty_amount > 0 %}
-
-                {{ qty_amount }}
-
-                {% else %}
-                  0
-              {% endif %}
-
-            {% endwith %}
-
-          </div>
-        </a>
-      </li> -->
-    </ul>
-  </div>
-</nav>
-
-
-<nav class="navbar navbar-expand-lg bg-light-subtle nav-subtitle">
-
-  <div class="col-md-4">
-    <form action="">
-      <input type="search" class="form-control" placeholder="Search...">
-    </form>
-  </div>
-  <div>
-    <ul class="navbar-nav d-flex flex-row gap-2">
-      <li class="nav-item">
-        <a type="button" role="button" href="{% url 'cart-summary' %}" class="btn btn-outline-secondary" style="font-size:1rem">
-          <i class="fa fa-shopping-cart" aria-hidden="true"> </i>
-          <div id="cart-qty" class="d-inline-flex">
-
-            {% with qty_amount=cart|length %}
-
-              {% if qty_amount > 0 %}
-
-                {{ qty_amount }}
-
-                {% else %}
-                  0
-              {% endif %}
-
-            {% endwith %}
-
-          </div>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a type="button" role="button" href="{% url 'cart-summary' %}" class="btn btn-outline-secondary" style="font-size:1rem">
-          <i class="fa fa-headphones"></i>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a type="button" role="button" href="{% url 'cart-summary' %}" class="btn btn-outline-secondary" style="font-size:1rem">
-          <i class="fa fa-globe"></i>
-        </a>
-      </li>
+    {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
       
-    </ul>
-  </div>
-</nav>
+      <h6 id="message_timer" class="alert alert-success text-center" style="border-radius:0px"> <i class="fa fa-sign-out"></i> <strong> {{message}} </strong> </h6>
 
-<body>
+    {% endif %}
 
-  {% block content %}
+    {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+      
+      <h6 id="message_timer" class="alert alert-danger text-center" style="border-radius:0px"> <i class="fa fa-exclamation-triangle"></i> <strong> {{message}} </strong> </h6>
 
-  {% endblock %}
+    {% endif %}
+ 
+    {% if message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+      
+      <h6 id="message_timer" class="alert bg-info text-center text-white" style="border-radius:0px"> <i class="fa fa-check-circle"></i> <strong> {{message}} </strong> </h6>
 
-</body>
+    {% endif %}
+
+  {% endfor %}
+
+  <body>
+
+    {% block content %}
+
+    {% endblock %}
+
+  </body>
+  <script src="{% static 'js/app.js' %}"></script>
 </html>
