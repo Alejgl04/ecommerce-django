@@ -529,7 +529,7 @@
         "kind": 6,
         "importPath": "ecommerce.account.forms",
         "description": "ecommerce.account.forms",
-        "peekOfCode": "class CreateUserForm(UserCreationForm):\n  def __init__(self, *args, **kwargs):\n    super(CreateUserForm, self).__init__(*args, **kwargs)\n    self.fields['email'].required = True\n  class Meta:\n    model = User\n    fields = ['username', 'email', 'password1', 'password2']\n    def clean_email(self):\n      email = self.cleaned_data.get('email')\n      if User.objects.filter(email=email).exists():",
+        "peekOfCode": "class CreateUserForm(UserCreationForm):\n  def __init__(self, *args, **kwargs):\n    super(CreateUserForm, self).__init__(*args, **kwargs)\n    self.fields['email'].required = True\n    self.fields['password1'].required = True\n    self.fields['password2'].required = True\n  class Meta:\n    model = User\n    fields = ['username', 'email', 'password1', 'password2']\n    def clean_email(self):",
         "detail": "ecommerce.account.forms",
         "documentation": {}
     },
@@ -547,7 +547,7 @@
         "kind": 6,
         "importPath": "ecommerce.account.forms",
         "description": "ecommerce.account.forms",
-        "peekOfCode": "class UpdateUserForm(forms.ModelForm):\n  password = None\n  def __init__(self, *args, **kwargs):\n    super(UpdateUserForm, self).__init__(*args, **kwargs)\n    self.fields['email'].required = True\n  class Meta:\n    model = User\n    fields = ['username', 'email']\n    exclude = ['password1', 'password1']",
+        "peekOfCode": "class UpdateUserForm(forms.ModelForm):\n  password = None\n  class Meta:\n    model = User\n    fields = ['username', 'email']\n    exclude = ['password1', 'password1']\n  def __init__(self, *args, **kwargs):\n    super(UpdateUserForm, self).__init__(*args, **kwargs)\n    self.fields['email'].required = True\n  def clean_email(self):",
         "detail": "ecommerce.account.forms",
         "documentation": {}
     },
@@ -637,7 +637,7 @@
         "kind": 2,
         "importPath": "ecommerce.account.views",
         "description": "ecommerce.account.views",
-        "peekOfCode": "def sign_out(request):\n  auth.logout(request)\n  return redirect('store')\n@login_required(login_url='sign-in')\ndef dashboard(request):\n  return render(request, 'account/dashboard.html')\n@login_required(login_url='sign-in')\ndef profile_management(request):\n  #Update email and username  \n  if request.method == 'POST':",
+        "peekOfCode": "def sign_out(request):\n  auth.logout(request)\n  return redirect('store')\n@login_required(login_url='sign-in')\ndef dashboard(request):\n  return render(request, 'account/dashboard.html')\n@login_required(login_url='sign-in')\ndef profile_management(request):\n  #Update email and username  \n  user_form = UpdateUserForm(instance=request.user)",
         "detail": "ecommerce.account.views",
         "documentation": {}
     },
@@ -646,7 +646,7 @@
         "kind": 2,
         "importPath": "ecommerce.account.views",
         "description": "ecommerce.account.views",
-        "peekOfCode": "def dashboard(request):\n  return render(request, 'account/dashboard.html')\n@login_required(login_url='sign-in')\ndef profile_management(request):\n  #Update email and username  \n  if request.method == 'POST':\n    user_form = UpdateUserForm(request.POST, instance=request.user)\n    if user_form.is_valid():\n      user_form.save()\n      return redirect('dashboard')",
+        "peekOfCode": "def dashboard(request):\n  return render(request, 'account/dashboard.html')\n@login_required(login_url='sign-in')\ndef profile_management(request):\n  #Update email and username  \n  user_form = UpdateUserForm(instance=request.user)\n  if request.method == 'POST':\n    user_form = UpdateUserForm(request.POST, instance=request.user)\n    if user_form.is_valid():\n      user_form.save()",
         "detail": "ecommerce.account.views",
         "documentation": {}
     },
@@ -655,7 +655,7 @@
         "kind": 2,
         "importPath": "ecommerce.account.views",
         "description": "ecommerce.account.views",
-        "peekOfCode": "def profile_management(request):\n  #Update email and username  \n  if request.method == 'POST':\n    user_form = UpdateUserForm(request.POST, instance=request.user)\n    if user_form.is_valid():\n      user_form.save()\n      return redirect('dashboard')\n  user_form = UpdateUserForm(instance=request.user)\n  context = {'user_form': user_form}\n  return render(request, 'account/profile-management.html', context)",
+        "peekOfCode": "def profile_management(request):\n  #Update email and username  \n  user_form = UpdateUserForm(instance=request.user)\n  if request.method == 'POST':\n    user_form = UpdateUserForm(request.POST, instance=request.user)\n    if user_form.is_valid():\n      user_form.save()\n      return redirect('dashboard')\n  context = {'user_form': user_form}\n  return render(request, 'account/profile-management.html', context)",
         "detail": "ecommerce.account.views",
         "documentation": {}
     },

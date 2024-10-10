@@ -28,8 +28,12 @@
                   {% endfor %}
               </ul>
             {% endif %}
-            <button type="submit" class="btn btn-secondary btn-lg w-100 btn-block p-2 mt-4"> Submit</button>
+            <button type="submit" class="btn btn-secondary btn-lg w-100 btn-block p-2 mt-4"> Sign in </button>
           </form>
+          <div class="d-flex justify-content-between mt-2">
+            <a class="text-decoration-underline" href="{% url 'sign-up' %}">Don't have an account?</a>
+            <a class="text-decoration-underline" href="{% url 'sign-in' %}">Forgotten password?</a>
+          </div>
         </div>
       </div>
     </div>

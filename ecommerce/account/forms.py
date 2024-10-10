@@ -13,6 +13,8 @@ class CreateUserForm(UserCreationForm):
     super(CreateUserForm, self).__init__(*args, **kwargs)
     
     self.fields['email'].required = True
+    self.fields['password1'].required = True
+    self.fields['password2'].required = True
     
   class Meta:
     
@@ -54,13 +56,26 @@ class SignInForm(AuthenticationForm):
 class UpdateUserForm(forms.ModelForm):
   password = None
   
-  def __init__(self, *args, **kwargs):
-    super(UpdateUserForm, self).__init__(*args, **kwargs)
-  
-    self.fields['email'].required = True
-    
   class Meta:
     
     model = User
     fields = ['username', 'email']
     exclude = ['password1', 'password1']
+    
+  def __init__(self, *args, **kwargs):
+    super(UpdateUserForm, self).__init__(*args, **kwargs)
+  
+    self.fields['email'].required = True
+    
+  def clean_email(self):
+    email = self.cleaned_data.get('email')
+    
+    if User.objects.filter(email=email).exclude(pk=self.instance.pk).exists():
+      
+      raise forms.ValidationError('Email already exist')
+    
+    if len(email) >= 350:
+      
+      raise forms.ValidationError('Email too long')
+              
+    return email
