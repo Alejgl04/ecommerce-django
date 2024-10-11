@@ -10,7 +10,12 @@
       <p class="lead text-muted">
         Browse our extensive collection.
       </p>
-      <a href="{% url 'sign-up' %}" class="btn btn-primary"> Create an account </a>
+      {% if not user.is_authenticated %}
+
+        <a href="{% url 'sign-up' %}" class="btn btn-primary"> Create an account </a>
+      
+      {% endif %}
+
     </div>
   </div>
 </section>
