@@ -328,6 +328,14 @@
         "documentation": {}
     },
     {
+        "label": "path",
+        "importPath": "django.urls",
+        "description": "django.urls",
+        "isExtraImport": true,
+        "detail": "django.urls",
+        "documentation": {}
+    },
+    {
         "label": "reverse",
         "importPath": "django.urls",
         "description": "django.urls",
@@ -1053,7 +1061,7 @@
         "kind": 5,
         "importPath": "ecommerce.ecommerce.urls",
         "description": "ecommerce.ecommerce.urls",
-        "peekOfCode": "urlpatterns = [\n    path('admin/', admin.site.urls),\n    path('', include('store.urls')),\n    path('cart/', include('cart.urls')),\n    path('account/', include('account.urls')),\n]\nurlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)",
+        "peekOfCode": "urlpatterns = [\n    path('admin/', admin.site.urls),\n    path('', include('store.urls')),\n    path('cart/', include('cart.urls')),\n    path('account/', include('account.urls')),\n    path('payment/', include('payment.urls')),\n]\nurlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)",
         "detail": "ecommerce.ecommerce.urls",
         "documentation": {}
     },
@@ -1073,6 +1081,33 @@
         "description": "ecommerce.payment.apps",
         "peekOfCode": "class PaymentConfig(AppConfig):\n    default_auto_field = 'django.db.models.BigAutoField'\n    name = 'payment'",
         "detail": "ecommerce.payment.apps",
+        "documentation": {}
+    },
+    {
+        "label": "urlpatterns",
+        "kind": 5,
+        "importPath": "ecommerce.payment.urls",
+        "description": "ecommerce.payment.urls",
+        "peekOfCode": "urlpatterns = [\n  path('payment-success', views.payment_success, name='payment-success'),\n  path('payment-failed', views.payment_failed, name='payment-failed'),\n]",
+        "detail": "ecommerce.payment.urls",
+        "documentation": {}
+    },
+    {
+        "label": "payment_success",
+        "kind": 2,
+        "importPath": "ecommerce.payment.views",
+        "description": "ecommerce.payment.views",
+        "peekOfCode": "def payment_success( request ):\n  return render( request, 'payment/payment-success.html')\ndef payment_failed( request ):\n  return render( request, 'payment/payment-failed.html')",
+        "detail": "ecommerce.payment.views",
+        "documentation": {}
+    },
+    {
+        "label": "payment_failed",
+        "kind": 2,
+        "importPath": "ecommerce.payment.views",
+        "description": "ecommerce.payment.views",
+        "peekOfCode": "def payment_failed( request ):\n  return render( request, 'payment/payment-failed.html')",
+        "detail": "ecommerce.payment.views",
         "documentation": {}
     },
     {
