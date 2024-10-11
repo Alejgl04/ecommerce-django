@@ -232,6 +232,22 @@
         "documentation": {}
     },
     {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
         "label": "models",
         "importPath": "django.db",
         "description": "django.db",
@@ -552,6 +568,14 @@
         "documentation": {}
     },
     {
+        "label": "Product",
+        "importPath": "store.models",
+        "description": "store.models",
+        "isExtraImport": true,
+        "detail": "store.models",
+        "documentation": {}
+    },
+    {
         "label": "JsonResponse",
         "importPath": "django.http",
         "description": "django.http",
@@ -582,6 +606,14 @@
         "description": "pathlib",
         "isExtraImport": true,
         "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "settings",
+        "importPath": "django.conf",
+        "description": "django.conf",
+        "isExtraImport": true,
+        "detail": "django.conf",
         "documentation": {}
     },
     {
@@ -1182,6 +1214,15 @@
         "documentation": {}
     },
     {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "ecommerce.payment.migrations.0003_order_orderitem",
+        "description": "ecommerce.payment.migrations.0003_order_orderitem",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('payment', '0002_alter_shippingaddress_user'),\n        ('store', '0002_product_category'),\n        migrations.swappable_dependency(settings.AUTH_USER_MODEL),\n    ]\n    operations = [\n        migrations.CreateModel(\n            name='Order',\n            fields=[",
+        "detail": "ecommerce.payment.migrations.0003_order_orderitem",
+        "documentation": {}
+    },
+    {
         "label": "PaymentConfig",
         "kind": 6,
         "importPath": "ecommerce.payment.apps",
@@ -1205,6 +1246,24 @@
         "importPath": "ecommerce.payment.models",
         "description": "ecommerce.payment.models",
         "peekOfCode": "class ShippingAddress(models.Model):\n  full_name = models.CharField(max_length=250)\n  email = models.EmailField(max_length=255)\n  first_address = models.CharField(max_length=300)\n  second_address = models.CharField(max_length=300)\n  city = models.CharField(max_length=255)\n  state = models.CharField(max_length=255, null=True, blank=True)\n  zipcode = models.CharField(max_length=255, null=True, blank=True)\n  user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)\n  class Meta:",
+        "detail": "ecommerce.payment.models",
+        "documentation": {}
+    },
+    {
+        "label": "Order",
+        "kind": 6,
+        "importPath": "ecommerce.payment.models",
+        "description": "ecommerce.payment.models",
+        "peekOfCode": "class Order(models.Model):\n  full_name = models.CharField(max_length=300)\n  email = models.EmailField(max_length=255)\n  shipping_address = models.TextField(max_length=10000)\n  amount_paid = models.DecimalField(max_digits=8, decimal_places=2)\n  date_order = models.DateTimeField(auto_now_add=True)\n  #FK\n  user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)\n  def __str__(self):\n    return ' Order - #' + str(self.id)",
+        "detail": "ecommerce.payment.models",
+        "documentation": {}
+    },
+    {
+        "label": "OrderItem",
+        "kind": 6,
+        "importPath": "ecommerce.payment.models",
+        "description": "ecommerce.payment.models",
+        "peekOfCode": "class OrderItem(models.Model):\n  order = models.ForeignKey( Order, on_delete=models.CASCADE, null=True )\n  product = models.ForeignKey( Product, on_delete=models.CASCADE, null=True )\n  quantity = models.PositiveBigIntegerField(default=1)\n  price = models.DecimalField(max_digits=8, decimal_places=2)\n  #FK\n  user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)\n  def __str__(self):\n    return ' Order Item - #' + str(self.id)",
         "detail": "ecommerce.payment.models",
         "documentation": {}
     },
