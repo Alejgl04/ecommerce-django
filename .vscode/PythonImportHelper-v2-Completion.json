@@ -120,6 +120,14 @@
         "documentation": {}
     },
     {
+        "label": "User",
+        "importPath": "django.contrib.auth.models",
+        "description": "django.contrib.auth.models",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth.models",
+        "documentation": {}
+    },
+    {
         "label": "authenticate",
         "importPath": "django.contrib.auth",
         "description": "django.contrib.auth",
@@ -137,22 +145,6 @@
     },
     {
         "label": "authenticate",
-        "importPath": "django.contrib.auth",
-        "description": "django.contrib.auth",
-        "isExtraImport": true,
-        "detail": "django.contrib.auth",
-        "documentation": {}
-    },
-    {
-        "label": "login",
-        "importPath": "django.contrib.auth",
-        "description": "django.contrib.auth",
-        "isExtraImport": true,
-        "detail": "django.contrib.auth",
-        "documentation": {}
-    },
-    {
-        "label": "logout",
         "importPath": "django.contrib.auth",
         "description": "django.contrib.auth",
         "isExtraImport": true,
@@ -184,7 +176,47 @@
         "documentation": {}
     },
     {
+        "label": "forms",
+        "importPath": "django",
+        "description": "django",
+        "isExtraImport": true,
+        "detail": "django",
+        "documentation": {}
+    },
+    {
         "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
         "importPath": "django.db",
         "description": "django.db",
         "isExtraImport": true,
@@ -464,6 +496,38 @@
         "documentation": {}
     },
     {
+        "label": "ShippingForm",
+        "importPath": "payment.forms",
+        "description": "payment.forms",
+        "isExtraImport": true,
+        "detail": "payment.forms",
+        "documentation": {}
+    },
+    {
+        "label": "ShippingForm",
+        "importPath": "payment.forms",
+        "description": "payment.forms",
+        "isExtraImport": true,
+        "detail": "payment.forms",
+        "documentation": {}
+    },
+    {
+        "label": "ShippingAddress",
+        "importPath": "payment.models",
+        "description": "payment.models",
+        "isExtraImport": true,
+        "detail": "payment.models",
+        "documentation": {}
+    },
+    {
+        "label": "ShippingAddress",
+        "importPath": "payment.models",
+        "description": "payment.models",
+        "isExtraImport": true,
+        "detail": "payment.models",
+        "documentation": {}
+    },
+    {
         "label": "Decimal",
         "importPath": "decimal",
         "description": "decimal",
@@ -518,6 +582,22 @@
         "description": "pathlib",
         "isExtraImport": true,
         "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "settings",
+        "importPath": "django.conf",
+        "description": "django.conf",
+        "isExtraImport": true,
+        "detail": "django.conf",
+        "documentation": {}
+    },
+    {
+        "label": "settings",
+        "importPath": "django.conf",
+        "description": "django.conf",
+        "isExtraImport": true,
+        "detail": "django.conf",
         "documentation": {}
     },
     {
@@ -728,7 +808,16 @@
         "kind": 2,
         "importPath": "ecommerce.account.views",
         "description": "ecommerce.account.views",
-        "peekOfCode": "def delete_account(request):\n  user = User.objects.get(id=request.user.id)\n  if request.method == 'POST':\n    user.delete()\n    messages.error(request, 'Account deleted')\n    return redirect('store')\n  return render(request, 'account/delete-account.html')",
+        "peekOfCode": "def delete_account(request):\n  user = User.objects.get(id=request.user.id)\n  if request.method == 'POST':\n    user.delete()\n    messages.error(request, 'Account deleted')\n    return redirect('store')\n  return render(request, 'account/delete-account.html')\n#Shipping view\ndef manage_shipping(request):\n  try:",
+        "detail": "ecommerce.account.views",
+        "documentation": {}
+    },
+    {
+        "label": "manage_shipping",
+        "kind": 2,
+        "importPath": "ecommerce.account.views",
+        "description": "ecommerce.account.views",
+        "peekOfCode": "def manage_shipping(request):\n  try:\n    # account user with shipment information\n    shipping = ShippingAddress.objects.get(user=request.user.id)\n  except ShippingAddress.DoesNotExist:\n    shipping = None\n  form = ShippingForm(instance=shipping)\n  if request.method == 'POST':\n    form = ShippingForm(request.POST, instance=shipping)\n    if form.is_valid():",
         "detail": "ecommerce.account.views",
         "documentation": {}
     },
@@ -1075,6 +1164,24 @@
         "documentation": {}
     },
     {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "ecommerce.payment.migrations.0001_initial",
+        "description": "ecommerce.payment.migrations.0001_initial",
+        "peekOfCode": "class Migration(migrations.Migration):\n    initial = True\n    dependencies = [\n        migrations.swappable_dependency(settings.AUTH_USER_MODEL),\n    ]\n    operations = [\n        migrations.CreateModel(\n            name='ShippingAddress',\n            fields=[\n                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),",
+        "detail": "ecommerce.payment.migrations.0001_initial",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "ecommerce.payment.migrations.0002_alter_shippingaddress_user",
+        "description": "ecommerce.payment.migrations.0002_alter_shippingaddress_user",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('payment', '0001_initial'),\n        migrations.swappable_dependency(settings.AUTH_USER_MODEL),\n    ]\n    operations = [\n        migrations.AlterField(\n            model_name='shippingaddress',\n            name='user',\n            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL),",
+        "detail": "ecommerce.payment.migrations.0002_alter_shippingaddress_user",
+        "documentation": {}
+    },
+    {
         "label": "PaymentConfig",
         "kind": 6,
         "importPath": "ecommerce.payment.apps",
@@ -1084,12 +1191,39 @@
         "documentation": {}
     },
     {
+        "label": "ShippingForm",
+        "kind": 6,
+        "importPath": "ecommerce.payment.forms",
+        "description": "ecommerce.payment.forms",
+        "peekOfCode": "class ShippingForm(forms.ModelForm):\n  class Meta:\n    model = ShippingAddress\n    fields = ['full_name', 'email', 'first_address', 'second_address', 'city', 'state', 'zipcode']\n    exclude = ['user',]",
+        "detail": "ecommerce.payment.forms",
+        "documentation": {}
+    },
+    {
+        "label": "ShippingAddress",
+        "kind": 6,
+        "importPath": "ecommerce.payment.models",
+        "description": "ecommerce.payment.models",
+        "peekOfCode": "class ShippingAddress(models.Model):\n  full_name = models.CharField(max_length=250)\n  email = models.EmailField(max_length=255)\n  first_address = models.CharField(max_length=300)\n  second_address = models.CharField(max_length=300)\n  city = models.CharField(max_length=255)\n  state = models.CharField(max_length=255, null=True, blank=True)\n  zipcode = models.CharField(max_length=255, null=True, blank=True)\n  user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)\n  class Meta:",
+        "detail": "ecommerce.payment.models",
+        "documentation": {}
+    },
+    {
         "label": "urlpatterns",
         "kind": 5,
         "importPath": "ecommerce.payment.urls",
         "description": "ecommerce.payment.urls",
-        "peekOfCode": "urlpatterns = [\n  path('payment-success', views.payment_success, name='payment-success'),\n  path('payment-failed', views.payment_failed, name='payment-failed'),\n]",
+        "peekOfCode": "urlpatterns = [\n  path('checkout', views.checkout, name='checkout'),\n  path('payment-success', views.payment_success, name='payment-success'),\n  path('payment-failed', views.payment_failed, name='payment-failed'),\n]",
         "detail": "ecommerce.payment.urls",
+        "documentation": {}
+    },
+    {
+        "label": "checkout",
+        "kind": 2,
+        "importPath": "ecommerce.payment.views",
+        "description": "ecommerce.payment.views",
+        "peekOfCode": "def checkout( request ):\n  return render( request, 'payment/checkout.html' )\ndef payment_success( request ):\n  return render( request, 'payment/payment-success.html')\ndef payment_failed( request ):\n  return render( request, 'payment/payment-failed.html')",
+        "detail": "ecommerce.payment.views",
         "documentation": {}
     },
     {
