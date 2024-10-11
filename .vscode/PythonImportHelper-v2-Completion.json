@@ -1222,7 +1222,7 @@
         "kind": 2,
         "importPath": "ecommerce.payment.views",
         "description": "ecommerce.payment.views",
-        "peekOfCode": "def checkout( request ):\n  return render( request, 'payment/checkout.html' )\ndef payment_success( request ):\n  return render( request, 'payment/payment-success.html')\ndef payment_failed( request ):\n  return render( request, 'payment/payment-failed.html')",
+        "peekOfCode": "def checkout( request ):\n  if request.user.is_authenticated:\n    try:     \n      # authenticated users with shipping info\n      shipping_address = ShippingAddress.objects.get(user=request.user.id)\n      context = { 'shipping': shipping_address }\n      return render( request, 'payment/checkout.html', context )\n    except:\n      # Authenticated users with no shipping information\n      return render( request, 'payment/checkout.html' )",
         "detail": "ecommerce.payment.views",
         "documentation": {}
     },
