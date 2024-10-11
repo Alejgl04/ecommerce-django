@@ -4,6 +4,11 @@
   width: 36rem!important;
 }
 
+.form-layout-shipping {
+  border-radius: 20px;
+  width: 50rem!important;
+}
+
 .mr-btn-1 {
   margin-right: 0.2rem;
 }
@@ -16,6 +21,9 @@
 
 @media (max-width: 578px) {
   .form-layout {
+    width: 90%!important;
+  }
+  .form-layout-shipping {
     width: 90%!important;
   }
 }
