@@ -127,23 +127,49 @@
     </div>
   </nav>
 
-  {% for message in messages %}
 
+  {% for message in messages %}
     {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
       
-      <h6 id="message_timer" class="alert alert-success text-center" style="border-radius:0px"> <i class="fa fa-sign-out"></i> <strong> {{message}} </strong> </h6>
-
+      <div id="message_timer">
+        <div class="toast show align-items-center text-bg-primary border-0 d-flex m-auto mt-4" role="alert" aria-live="assertive" aria-atomic="true">
+          <div class="d-flex m-auto">
+            <div class="toast-body">
+              <i class="fa fa-sign-out"></i> <strong> {{message}} </strong>
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto text-white" data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>
+        </div>
+      </div>
     {% endif %}
 
     {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
-      
-      <h6 id="message_timer" class="alert alert-danger text-center" style="border-radius:0px"> <i class="fa fa-exclamation-triangle"></i> <strong> {{message}} </strong> </h6>
+
+      <div id="message_timer">
+        <div class="toast show align-items-center text-bg-danger border-0 d-flex m-auto mt-4" role="alert" aria-live="assertive" aria-atomic="true">
+          <div class="d-flex m-auto">
+            <div class="toast-body">
+              <i class="fa fa-exclamation-triangle"></i> <strong> {{message}} </strong>
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto text-white" data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>
+        </div>
+      </div>
 
     {% endif %}
  
     {% if message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
       
-      <h6 id="message_timer" class="alert bg-info text-center text-white" style="border-radius:0px"> <i class="fa fa-check-circle"></i> <strong> {{message}} </strong> </h6>
+      <div id="message_timer">
+        <div class="toast show align-items-center text-bg-info border-0 d-flex m-auto mt-4" role="alert" aria-live="assertive" aria-atomic="true">
+          <div class="d-flex m-auto">
+            <div class="toast-body">
+              <i class="fa fa-check-circle"></i> <strong> {{message}} </strong>
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto text-white" data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>
+        </div>
+      </div>
 
     {% endif %}
 

@@ -1,8 +1,6 @@
 
 $(document).ready( () => {
-  let messageTimer = document.getElementById('message_timer');
-
   setTimeout(() => {
-    messageTimer.style.display = "none";
+    $('#message_timer').css({'display':'none'});
   }, 4000);
 })
