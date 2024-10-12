@@ -584,6 +584,14 @@
         "documentation": {}
     },
     {
+        "label": "JsonResponse",
+        "importPath": "django.http",
+        "description": "django.http",
+        "isExtraImport": true,
+        "detail": "django.http",
+        "documentation": {}
+    },
+    {
         "label": "os",
         "kind": 6,
         "isExtraImport": true,
@@ -663,6 +671,14 @@
         "importPath": "django.db.models.deletion",
         "description": "django.db.models.deletion",
         "detail": "django.db.models.deletion",
+        "documentation": {}
+    },
+    {
+        "label": "Cart",
+        "importPath": "cart.cart",
+        "description": "cart.cart",
+        "isExtraImport": true,
+        "detail": "cart.cart",
         "documentation": {}
     },
     {
@@ -1272,7 +1288,7 @@
         "kind": 5,
         "importPath": "ecommerce.payment.urls",
         "description": "ecommerce.payment.urls",
-        "peekOfCode": "urlpatterns = [\n  path('checkout', views.checkout, name='checkout'),\n  path('payment-success', views.payment_success, name='payment-success'),\n  path('payment-failed', views.payment_failed, name='payment-failed'),\n]",
+        "peekOfCode": "urlpatterns = [\n  path('checkout', views.checkout, name='checkout'),\n  path('complete-order', views.complete_order, name='complete-order'),\n  path('payment-success', views.payment_success, name='payment-success'),\n  path('payment-failed', views.payment_failed, name='payment-failed'),\n]",
         "detail": "ecommerce.payment.urls",
         "documentation": {}
     },
@@ -1286,11 +1302,20 @@
         "documentation": {}
     },
     {
+        "label": "complete_order",
+        "kind": 2,
+        "importPath": "ecommerce.payment.views",
+        "description": "ecommerce.payment.views",
+        "peekOfCode": "def complete_order(request):\n  print(request.POST)\n  if request.POST.get('action') == 'post':\n    name  = request.POST.get('name')\n    email = request.POST.get('email')\n    first_address  = request.POST.get('first_address')\n    second_address = request.POST.get('second_address')\n    city    = request.POST.get('city')\n    state   = request.POST.get('state')\n    zipcode = request.POST.get('zipcode')",
+        "detail": "ecommerce.payment.views",
+        "documentation": {}
+    },
+    {
         "label": "payment_success",
         "kind": 2,
         "importPath": "ecommerce.payment.views",
         "description": "ecommerce.payment.views",
-        "peekOfCode": "def payment_success( request ):\n  return render( request, 'payment/payment-success.html')\ndef payment_failed( request ):\n  return render( request, 'payment/payment-failed.html')",
+        "peekOfCode": "def payment_success( request ):\n  # Clear shopping cart\n  for key in list(request.session.keys()):\n    if key == 'session_key':\n      del request.session[key]\n  return render( request, 'payment/payment-success.html')\ndef payment_failed( request ):\n  return render( request, 'payment/payment-failed.html')",
         "detail": "ecommerce.payment.views",
         "documentation": {}
     },
