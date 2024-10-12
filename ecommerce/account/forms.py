@@ -37,9 +37,8 @@ class CreateUserForm(UserCreationForm):
 
 class SignInForm(AuthenticationForm):
   
-  username = forms.CharField(widget=TextInput())
+  username = forms.CharField(widget=TextInput(), strip=False)
   password = forms.CharField(widget=PasswordInput())
-  
 
 class UpdateUserForm(forms.ModelForm):
   password = None

@@ -730,7 +730,7 @@
         "kind": 6,
         "importPath": "ecommerce.account.forms",
         "description": "ecommerce.account.forms",
-        "peekOfCode": "class SignInForm(AuthenticationForm):\n  username = forms.CharField(widget=TextInput())\n  password = forms.CharField(widget=PasswordInput())\nclass UpdateUserForm(forms.ModelForm):\n  password = None\n  class Meta:\n    model = User\n    fields = ['username', 'email']\n    exclude = ['password1', 'password1']\n  def __init__(self, *args, **kwargs):",
+        "peekOfCode": "class SignInForm(AuthenticationForm):\n  username = forms.CharField(widget=TextInput(), strip=False)\n  password = forms.CharField(widget=PasswordInput())\nclass UpdateUserForm(forms.ModelForm):\n  password = None\n  class Meta:\n    model = User\n    fields = ['username', 'email']\n    exclude = ['password1', 'password1']\n  def __init__(self, *args, **kwargs):",
         "detail": "ecommerce.account.forms",
         "documentation": {}
     },
