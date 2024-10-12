@@ -146,3 +146,6 @@ EMAIL=PORT = '587'
 EMAIL_USE_TLS = 'True'
 EMAIL_HOST_USER = 'aguerrerodev.web@gmail.com'
 EMAIL_HOST_PASSWORD = 'snvr tuie onlb ybpz'
+
+# ALLOW PAYPAL POPUS
+SECURE_CROSS_ORIGIN_OPENER_POLICY='same-origin-allow-popups'

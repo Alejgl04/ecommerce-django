@@ -1135,7 +1135,7 @@
         "kind": 5,
         "importPath": "ecommerce.ecommerce.settings",
         "description": "ecommerce.ecommerce.settings",
-        "peekOfCode": "DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nEMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'\nEMAIL_HOST = 'smtp.gmail.com'\nEMAIL=PORT = '587'\nEMAIL_USE_TLS = 'True'\nEMAIL_HOST_USER = 'aguerrerodev.web@gmail.com'\nEMAIL_HOST_PASSWORD = 'snvr tuie onlb ybpz'",
+        "peekOfCode": "DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nEMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'\nEMAIL_HOST = 'smtp.gmail.com'\nEMAIL=PORT = '587'\nEMAIL_USE_TLS = 'True'\nEMAIL_HOST_USER = 'aguerrerodev.web@gmail.com'\nEMAIL_HOST_PASSWORD = 'snvr tuie onlb ybpz'\n# ALLOW PAYPAL POPUS\nSECURE_CROSS_ORIGIN_OPENER_POLICY='same-origin-allow-popups'",
         "detail": "ecommerce.ecommerce.settings",
         "documentation": {}
     },
@@ -1144,7 +1144,7 @@
         "kind": 5,
         "importPath": "ecommerce.ecommerce.settings",
         "description": "ecommerce.ecommerce.settings",
-        "peekOfCode": "EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'\nEMAIL_HOST = 'smtp.gmail.com'\nEMAIL=PORT = '587'\nEMAIL_USE_TLS = 'True'\nEMAIL_HOST_USER = 'aguerrerodev.web@gmail.com'\nEMAIL_HOST_PASSWORD = 'snvr tuie onlb ybpz'",
+        "peekOfCode": "EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'\nEMAIL_HOST = 'smtp.gmail.com'\nEMAIL=PORT = '587'\nEMAIL_USE_TLS = 'True'\nEMAIL_HOST_USER = 'aguerrerodev.web@gmail.com'\nEMAIL_HOST_PASSWORD = 'snvr tuie onlb ybpz'\n# ALLOW PAYPAL POPUS\nSECURE_CROSS_ORIGIN_OPENER_POLICY='same-origin-allow-popups'",
         "detail": "ecommerce.ecommerce.settings",
         "documentation": {}
     },
@@ -1153,7 +1153,7 @@
         "kind": 5,
         "importPath": "ecommerce.ecommerce.settings",
         "description": "ecommerce.ecommerce.settings",
-        "peekOfCode": "EMAIL_HOST = 'smtp.gmail.com'\nEMAIL=PORT = '587'\nEMAIL_USE_TLS = 'True'\nEMAIL_HOST_USER = 'aguerrerodev.web@gmail.com'\nEMAIL_HOST_PASSWORD = 'snvr tuie onlb ybpz'",
+        "peekOfCode": "EMAIL_HOST = 'smtp.gmail.com'\nEMAIL=PORT = '587'\nEMAIL_USE_TLS = 'True'\nEMAIL_HOST_USER = 'aguerrerodev.web@gmail.com'\nEMAIL_HOST_PASSWORD = 'snvr tuie onlb ybpz'\n# ALLOW PAYPAL POPUS\nSECURE_CROSS_ORIGIN_OPENER_POLICY='same-origin-allow-popups'",
         "detail": "ecommerce.ecommerce.settings",
         "documentation": {}
     },
@@ -1162,7 +1162,7 @@
         "kind": 5,
         "importPath": "ecommerce.ecommerce.settings",
         "description": "ecommerce.ecommerce.settings",
-        "peekOfCode": "EMAIL=PORT = '587'\nEMAIL_USE_TLS = 'True'\nEMAIL_HOST_USER = 'aguerrerodev.web@gmail.com'\nEMAIL_HOST_PASSWORD = 'snvr tuie onlb ybpz'",
+        "peekOfCode": "EMAIL=PORT = '587'\nEMAIL_USE_TLS = 'True'\nEMAIL_HOST_USER = 'aguerrerodev.web@gmail.com'\nEMAIL_HOST_PASSWORD = 'snvr tuie onlb ybpz'\n# ALLOW PAYPAL POPUS\nSECURE_CROSS_ORIGIN_OPENER_POLICY='same-origin-allow-popups'",
         "detail": "ecommerce.ecommerce.settings",
         "documentation": {}
     },
@@ -1171,7 +1171,7 @@
         "kind": 5,
         "importPath": "ecommerce.ecommerce.settings",
         "description": "ecommerce.ecommerce.settings",
-        "peekOfCode": "EMAIL_USE_TLS = 'True'\nEMAIL_HOST_USER = 'aguerrerodev.web@gmail.com'\nEMAIL_HOST_PASSWORD = 'snvr tuie onlb ybpz'",
+        "peekOfCode": "EMAIL_USE_TLS = 'True'\nEMAIL_HOST_USER = 'aguerrerodev.web@gmail.com'\nEMAIL_HOST_PASSWORD = 'snvr tuie onlb ybpz'\n# ALLOW PAYPAL POPUS\nSECURE_CROSS_ORIGIN_OPENER_POLICY='same-origin-allow-popups'",
         "detail": "ecommerce.ecommerce.settings",
         "documentation": {}
     },
@@ -1180,7 +1180,7 @@
         "kind": 5,
         "importPath": "ecommerce.ecommerce.settings",
         "description": "ecommerce.ecommerce.settings",
-        "peekOfCode": "EMAIL_HOST_USER = 'aguerrerodev.web@gmail.com'\nEMAIL_HOST_PASSWORD = 'snvr tuie onlb ybpz'",
+        "peekOfCode": "EMAIL_HOST_USER = 'aguerrerodev.web@gmail.com'\nEMAIL_HOST_PASSWORD = 'snvr tuie onlb ybpz'\n# ALLOW PAYPAL POPUS\nSECURE_CROSS_ORIGIN_OPENER_POLICY='same-origin-allow-popups'",
         "detail": "ecommerce.ecommerce.settings",
         "documentation": {}
     },
@@ -1189,7 +1189,7 @@
         "kind": 5,
         "importPath": "ecommerce.ecommerce.settings",
         "description": "ecommerce.ecommerce.settings",
-        "peekOfCode": "EMAIL_HOST_PASSWORD = 'snvr tuie onlb ybpz'",
+        "peekOfCode": "EMAIL_HOST_PASSWORD = 'snvr tuie onlb ybpz'\n# ALLOW PAYPAL POPUS\nSECURE_CROSS_ORIGIN_OPENER_POLICY='same-origin-allow-popups'",
         "detail": "ecommerce.ecommerce.settings",
         "documentation": {}
     },
