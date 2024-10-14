@@ -29,8 +29,10 @@
       <div class="col p-4 m-2 border">
         <h4>Delete your account from the system</h4>
         <hr>          
-        <div class="d-flex flex-row justify-content-between">
-          <a class="btn btn-danger navbar-btn text-white" type="button" href="{% url 'delete-account' %}"> Delete your account </a>
+        <div class="d-flex gap-2">
+          <a class="btn btn-danger w-100 navbar-btn text-white" type="button" href="{% url 'delete-account' %}"> Delete your account </a>
+          
+          <a class="btn btn-primary w-100" href="{% url 'dashboard' %}"> Go back </a>
         </div>
         </div>
       </div>

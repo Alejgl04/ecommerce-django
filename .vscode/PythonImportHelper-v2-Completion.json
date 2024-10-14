@@ -544,6 +544,22 @@
         "documentation": {}
     },
     {
+        "label": "Order",
+        "importPath": "payment.models",
+        "description": "payment.models",
+        "isExtraImport": true,
+        "detail": "payment.models",
+        "documentation": {}
+    },
+    {
+        "label": "OrderItem",
+        "importPath": "payment.models",
+        "description": "payment.models",
+        "isExtraImport": true,
+        "detail": "payment.models",
+        "documentation": {}
+    },
+    {
         "label": "Decimal",
         "importPath": "decimal",
         "description": "decimal",
@@ -866,6 +882,15 @@
         "importPath": "ecommerce.account.views",
         "description": "ecommerce.account.views",
         "peekOfCode": "def manage_shipping(request):\n  try:\n    # account user with shipment information\n    shipping = ShippingAddress.objects.get(user=request.user.id)\n  except ShippingAddress.DoesNotExist:\n    shipping = None\n  form = ShippingForm(instance=shipping)\n  if request.method == 'POST':\n    form = ShippingForm(request.POST, instance=shipping)\n    if form.is_valid():",
+        "detail": "ecommerce.account.views",
+        "documentation": {}
+    },
+    {
+        "label": "track_orders",
+        "kind": 2,
+        "importPath": "ecommerce.account.views",
+        "description": "ecommerce.account.views",
+        "peekOfCode": "def track_orders(request):\n  try:\n    orders = OrderItem.objects.filter(user=request.user).order_by('-id')\n    context = {'orders': orders}\n    return render(request, 'account/track-orders.html', context)\n  except:  \n    return render(request, 'account/track-orders.html')",
         "detail": "ecommerce.account.views",
         "documentation": {}
     },

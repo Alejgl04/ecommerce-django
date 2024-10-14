@@ -15,7 +15,7 @@ from payment.forms import ShippingForm
 from payment.models import ShippingAddress
 
 from payment.forms import ShippingForm
-from payment.models import ShippingAddress
+from payment.models import ShippingAddress, Order, OrderItem
 
 from .token import user_tokenizer_generate
 from .forms import CreateUserForm, SignInForm, UpdateUserForm
@@ -220,3 +220,18 @@ def manage_shipping(request):
       
   context = { 'form': form }
   return render( request, 'account/manage-shipping.html', context )
+
+
+@login_required(login_url='sign-in')
+def track_orders(request):
+  
+  try:
+
+    orders = OrderItem.objects.filter(user=request.user).order_by('-id')
+    
+    context = {'orders': orders}
+    
+    return render(request, 'account/track-orders.html', context)
+  
+  except:  
+    return render(request, 'account/track-orders.html')
