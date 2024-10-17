@@ -633,6 +633,15 @@
         "documentation": {}
     },
     {
+        "label": "environ",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "environ",
+        "description": "environ",
+        "detail": "environ",
+        "documentation": {}
+    },
+    {
         "label": "settings",
         "importPath": "django.conf",
         "description": "django.conf",
@@ -721,6 +730,49 @@
         "importPath": "site",
         "description": "site",
         "detail": "site",
+        "documentation": {}
+    },
+    {
+        "label": "json",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "json",
+        "description": "json",
+        "detail": "json",
+        "documentation": {}
+    },
+    {
+        "label": "argparse",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "argparse",
+        "description": "argparse",
+        "detail": "argparse",
+        "documentation": {}
+    },
+    {
+        "label": "pformat",
+        "importPath": "pprint",
+        "description": "pprint",
+        "isExtraImport": true,
+        "detail": "pprint",
+        "documentation": {}
+    },
+    {
+        "label": "jmespath",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "jmespath",
+        "description": "jmespath",
+        "detail": "jmespath",
+        "documentation": {}
+    },
+    {
+        "label": "exceptions",
+        "importPath": "jmespath",
+        "description": "jmespath",
+        "isExtraImport": true,
+        "detail": "jmespath",
         "documentation": {}
     },
     {
@@ -980,7 +1032,16 @@
         "kind": 5,
         "importPath": "ecommerce.ecommerce.settings",
         "description": "ecommerce.ecommerce.settings",
-        "peekOfCode": "BASE_DIR = Path(__file__).resolve().parent.parent\n# Quick-start development settings - unsuitable for production\n# See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/\n# SECURITY WARNING: keep the secret key used in production secret!\nSECRET_KEY = 'django-insecure-tk122d0m!6or(jke_i2p+!a6125sn8du_z)9&l%w1=x7dp7$z#'\n# SECURITY WARNING: don't run with debug turned on in production!\nDEBUG = True\nALLOWED_HOSTS = []\n# Application definition\nINSTALLED_APPS = [",
+        "peekOfCode": "BASE_DIR = Path(__file__).resolve().parent.parent\nenv = environ.Env()\nenviron.Env.read_env(os.path.join(BASE_DIR, '.env'))\n# Quick-start development settings - unsuitable for production\n# See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/\n# SECURITY WARNING: keep the secret key used in production secret!\nSECRET_KEY = 'django-insecure-tk122d0m!6or(jke_i2p+!a6125sn8du_z)9&l%w1=x7dp7$z#'\n# SECURITY WARNING: don't run with debug turned on in production!\nDEBUG = True\nALLOWED_HOSTS = []",
+        "detail": "ecommerce.ecommerce.settings",
+        "documentation": {}
+    },
+    {
+        "label": "env",
+        "kind": 5,
+        "importPath": "ecommerce.ecommerce.settings",
+        "description": "ecommerce.ecommerce.settings",
+        "peekOfCode": "env = environ.Env()\nenviron.Env.read_env(os.path.join(BASE_DIR, '.env'))\n# Quick-start development settings - unsuitable for production\n# See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/\n# SECURITY WARNING: keep the secret key used in production secret!\nSECRET_KEY = 'django-insecure-tk122d0m!6or(jke_i2p+!a6125sn8du_z)9&l%w1=x7dp7$z#'\n# SECURITY WARNING: don't run with debug turned on in production!\nDEBUG = True\nALLOWED_HOSTS = []\n# Application definition",
         "detail": "ecommerce.ecommerce.settings",
         "documentation": {}
     },
@@ -1097,7 +1158,7 @@
         "kind": 5,
         "importPath": "ecommerce.ecommerce.settings",
         "description": "ecommerce.ecommerce.settings",
-        "peekOfCode": "TIME_ZONE = 'UTC'\nUSE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.1/howto/static-files/\nSTATIC_URL = '/static/'\nSTATICFILES_DIRS = [BASE_DIR / 'static']\nMEDIA_URL = '/media/'\nMEDIA_ROOT = BASE_DIR / 'static/media'\n# Default primary key field type",
+        "peekOfCode": "TIME_ZONE = 'UTC'\nUSE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.1/howto/static-files/\nSTATIC_URL = '/static/'\nSTATICFILES_DIRS = [BASE_DIR / 'static']\nMEDIA_URL = '/media/'\nMEDIA_ROOT = BASE_DIR / 'static/media'",
         "detail": "ecommerce.ecommerce.settings",
         "documentation": {}
     },
@@ -1106,7 +1167,7 @@
         "kind": 5,
         "importPath": "ecommerce.ecommerce.settings",
         "description": "ecommerce.ecommerce.settings",
-        "peekOfCode": "USE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.1/howto/static-files/\nSTATIC_URL = '/static/'\nSTATICFILES_DIRS = [BASE_DIR / 'static']\nMEDIA_URL = '/media/'\nMEDIA_ROOT = BASE_DIR / 'static/media'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field",
+        "peekOfCode": "USE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.1/howto/static-files/\nSTATIC_URL = '/static/'\nSTATICFILES_DIRS = [BASE_DIR / 'static']\nMEDIA_URL = '/media/'\nMEDIA_ROOT = BASE_DIR / 'static/media'\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'",
         "detail": "ecommerce.ecommerce.settings",
         "documentation": {}
     },
@@ -1115,7 +1176,7 @@
         "kind": 5,
         "importPath": "ecommerce.ecommerce.settings",
         "description": "ecommerce.ecommerce.settings",
-        "peekOfCode": "USE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.1/howto/static-files/\nSTATIC_URL = '/static/'\nSTATICFILES_DIRS = [BASE_DIR / 'static']\nMEDIA_URL = '/media/'\nMEDIA_ROOT = BASE_DIR / 'static/media'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'",
+        "peekOfCode": "USE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.1/howto/static-files/\nSTATIC_URL = '/static/'\nSTATICFILES_DIRS = [BASE_DIR / 'static']\nMEDIA_URL = '/media/'\nMEDIA_ROOT = BASE_DIR / 'static/media'\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nEMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'\nEMAIL_HOST = 'smtp.gmail.com'",
         "detail": "ecommerce.ecommerce.settings",
         "documentation": {}
     },
@@ -1124,7 +1185,7 @@
         "kind": 5,
         "importPath": "ecommerce.ecommerce.settings",
         "description": "ecommerce.ecommerce.settings",
-        "peekOfCode": "STATIC_URL = '/static/'\nSTATICFILES_DIRS = [BASE_DIR / 'static']\nMEDIA_URL = '/media/'\nMEDIA_ROOT = BASE_DIR / 'static/media'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nEMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'\nEMAIL_HOST = 'smtp.gmail.com'\nEMAIL=PORT = '587'",
+        "peekOfCode": "STATIC_URL = '/static/'\nSTATICFILES_DIRS = [BASE_DIR / 'static']\nMEDIA_URL = '/media/'\nMEDIA_ROOT = BASE_DIR / 'static/media'\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nEMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'\nEMAIL_HOST = 'smtp.gmail.com'\nEMAIL=PORT = '587'\nEMAIL_USE_TLS = 'True'\nEMAIL_HOST_USER = env('EMAIL_HOST_USER')",
         "detail": "ecommerce.ecommerce.settings",
         "documentation": {}
     },
@@ -1133,7 +1194,7 @@
         "kind": 5,
         "importPath": "ecommerce.ecommerce.settings",
         "description": "ecommerce.ecommerce.settings",
-        "peekOfCode": "STATICFILES_DIRS = [BASE_DIR / 'static']\nMEDIA_URL = '/media/'\nMEDIA_ROOT = BASE_DIR / 'static/media'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nEMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'\nEMAIL_HOST = 'smtp.gmail.com'\nEMAIL=PORT = '587'\nEMAIL_USE_TLS = 'True'",
+        "peekOfCode": "STATICFILES_DIRS = [BASE_DIR / 'static']\nMEDIA_URL = '/media/'\nMEDIA_ROOT = BASE_DIR / 'static/media'\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nEMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'\nEMAIL_HOST = 'smtp.gmail.com'\nEMAIL=PORT = '587'\nEMAIL_USE_TLS = 'True'\nEMAIL_HOST_USER = env('EMAIL_HOST_USER')\nEMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')",
         "detail": "ecommerce.ecommerce.settings",
         "documentation": {}
     },
@@ -1142,7 +1203,7 @@
         "kind": 5,
         "importPath": "ecommerce.ecommerce.settings",
         "description": "ecommerce.ecommerce.settings",
-        "peekOfCode": "MEDIA_URL = '/media/'\nMEDIA_ROOT = BASE_DIR / 'static/media'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nEMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'\nEMAIL_HOST = 'smtp.gmail.com'\nEMAIL=PORT = '587'\nEMAIL_USE_TLS = 'True'\nEMAIL_HOST_USER = 'aguerrerodev.web@gmail.com'",
+        "peekOfCode": "MEDIA_URL = '/media/'\nMEDIA_ROOT = BASE_DIR / 'static/media'\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nEMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'\nEMAIL_HOST = 'smtp.gmail.com'\nEMAIL=PORT = '587'\nEMAIL_USE_TLS = 'True'\nEMAIL_HOST_USER = env('EMAIL_HOST_USER')\nEMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')\n# ALLOW PAYPAL POPUS",
         "detail": "ecommerce.ecommerce.settings",
         "documentation": {}
     },
@@ -1151,7 +1212,7 @@
         "kind": 5,
         "importPath": "ecommerce.ecommerce.settings",
         "description": "ecommerce.ecommerce.settings",
-        "peekOfCode": "MEDIA_ROOT = BASE_DIR / 'static/media'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nEMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'\nEMAIL_HOST = 'smtp.gmail.com'\nEMAIL=PORT = '587'\nEMAIL_USE_TLS = 'True'\nEMAIL_HOST_USER = 'aguerrerodev.web@gmail.com'\nEMAIL_HOST_PASSWORD = 'snvr tuie onlb ybpz'",
+        "peekOfCode": "MEDIA_ROOT = BASE_DIR / 'static/media'\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nEMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'\nEMAIL_HOST = 'smtp.gmail.com'\nEMAIL=PORT = '587'\nEMAIL_USE_TLS = 'True'\nEMAIL_HOST_USER = env('EMAIL_HOST_USER')\nEMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')\n# ALLOW PAYPAL POPUS\nSECURE_CROSS_ORIGIN_OPENER_POLICY='same-origin-allow-popups'",
         "detail": "ecommerce.ecommerce.settings",
         "documentation": {}
     },
@@ -1160,7 +1221,7 @@
         "kind": 5,
         "importPath": "ecommerce.ecommerce.settings",
         "description": "ecommerce.ecommerce.settings",
-        "peekOfCode": "DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nEMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'\nEMAIL_HOST = 'smtp.gmail.com'\nEMAIL=PORT = '587'\nEMAIL_USE_TLS = 'True'\nEMAIL_HOST_USER = 'aguerrerodev.web@gmail.com'\nEMAIL_HOST_PASSWORD = 'snvr tuie onlb ybpz'\n# ALLOW PAYPAL POPUS\nSECURE_CROSS_ORIGIN_OPENER_POLICY='same-origin-allow-popups'",
+        "peekOfCode": "DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nEMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'\nEMAIL_HOST = 'smtp.gmail.com'\nEMAIL=PORT = '587'\nEMAIL_USE_TLS = 'True'\nEMAIL_HOST_USER = env('EMAIL_HOST_USER')\nEMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')\n# ALLOW PAYPAL POPUS\nSECURE_CROSS_ORIGIN_OPENER_POLICY='same-origin-allow-popups'\n# AWS CREDENTIALS",
         "detail": "ecommerce.ecommerce.settings",
         "documentation": {}
     },
@@ -1169,7 +1230,7 @@
         "kind": 5,
         "importPath": "ecommerce.ecommerce.settings",
         "description": "ecommerce.ecommerce.settings",
-        "peekOfCode": "EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'\nEMAIL_HOST = 'smtp.gmail.com'\nEMAIL=PORT = '587'\nEMAIL_USE_TLS = 'True'\nEMAIL_HOST_USER = 'aguerrerodev.web@gmail.com'\nEMAIL_HOST_PASSWORD = 'snvr tuie onlb ybpz'\n# ALLOW PAYPAL POPUS\nSECURE_CROSS_ORIGIN_OPENER_POLICY='same-origin-allow-popups'",
+        "peekOfCode": "EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'\nEMAIL_HOST = 'smtp.gmail.com'\nEMAIL=PORT = '587'\nEMAIL_USE_TLS = 'True'\nEMAIL_HOST_USER = env('EMAIL_HOST_USER')\nEMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')\n# ALLOW PAYPAL POPUS\nSECURE_CROSS_ORIGIN_OPENER_POLICY='same-origin-allow-popups'\n# AWS CREDENTIALS\nAWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID')",
         "detail": "ecommerce.ecommerce.settings",
         "documentation": {}
     },
@@ -1178,7 +1239,7 @@
         "kind": 5,
         "importPath": "ecommerce.ecommerce.settings",
         "description": "ecommerce.ecommerce.settings",
-        "peekOfCode": "EMAIL_HOST = 'smtp.gmail.com'\nEMAIL=PORT = '587'\nEMAIL_USE_TLS = 'True'\nEMAIL_HOST_USER = 'aguerrerodev.web@gmail.com'\nEMAIL_HOST_PASSWORD = 'snvr tuie onlb ybpz'\n# ALLOW PAYPAL POPUS\nSECURE_CROSS_ORIGIN_OPENER_POLICY='same-origin-allow-popups'",
+        "peekOfCode": "EMAIL_HOST = 'smtp.gmail.com'\nEMAIL=PORT = '587'\nEMAIL_USE_TLS = 'True'\nEMAIL_HOST_USER = env('EMAIL_HOST_USER')\nEMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')\n# ALLOW PAYPAL POPUS\nSECURE_CROSS_ORIGIN_OPENER_POLICY='same-origin-allow-popups'\n# AWS CREDENTIALS\nAWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID')\nAWS_SECRET_ACCESS_KEY = env('AWS_SECRET_ACCESS_KEY')",
         "detail": "ecommerce.ecommerce.settings",
         "documentation": {}
     },
@@ -1187,7 +1248,7 @@
         "kind": 5,
         "importPath": "ecommerce.ecommerce.settings",
         "description": "ecommerce.ecommerce.settings",
-        "peekOfCode": "EMAIL=PORT = '587'\nEMAIL_USE_TLS = 'True'\nEMAIL_HOST_USER = 'aguerrerodev.web@gmail.com'\nEMAIL_HOST_PASSWORD = 'snvr tuie onlb ybpz'\n# ALLOW PAYPAL POPUS\nSECURE_CROSS_ORIGIN_OPENER_POLICY='same-origin-allow-popups'",
+        "peekOfCode": "EMAIL=PORT = '587'\nEMAIL_USE_TLS = 'True'\nEMAIL_HOST_USER = env('EMAIL_HOST_USER')\nEMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')\n# ALLOW PAYPAL POPUS\nSECURE_CROSS_ORIGIN_OPENER_POLICY='same-origin-allow-popups'\n# AWS CREDENTIALS\nAWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID')\nAWS_SECRET_ACCESS_KEY = env('AWS_SECRET_ACCESS_KEY')\n# S3 AWS CONFIGURATION BUCKET ",
         "detail": "ecommerce.ecommerce.settings",
         "documentation": {}
     },
@@ -1196,7 +1257,7 @@
         "kind": 5,
         "importPath": "ecommerce.ecommerce.settings",
         "description": "ecommerce.ecommerce.settings",
-        "peekOfCode": "EMAIL_USE_TLS = 'True'\nEMAIL_HOST_USER = 'aguerrerodev.web@gmail.com'\nEMAIL_HOST_PASSWORD = 'snvr tuie onlb ybpz'\n# ALLOW PAYPAL POPUS\nSECURE_CROSS_ORIGIN_OPENER_POLICY='same-origin-allow-popups'",
+        "peekOfCode": "EMAIL_USE_TLS = 'True'\nEMAIL_HOST_USER = env('EMAIL_HOST_USER')\nEMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')\n# ALLOW PAYPAL POPUS\nSECURE_CROSS_ORIGIN_OPENER_POLICY='same-origin-allow-popups'\n# AWS CREDENTIALS\nAWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID')\nAWS_SECRET_ACCESS_KEY = env('AWS_SECRET_ACCESS_KEY')\n# S3 AWS CONFIGURATION BUCKET \nAWS_STORAGE_BUCKET_NAME = env('AWS_STORAGE_BUCKET_NAME')",
         "detail": "ecommerce.ecommerce.settings",
         "documentation": {}
     },
@@ -1205,7 +1266,7 @@
         "kind": 5,
         "importPath": "ecommerce.ecommerce.settings",
         "description": "ecommerce.ecommerce.settings",
-        "peekOfCode": "EMAIL_HOST_USER = 'aguerrerodev.web@gmail.com'\nEMAIL_HOST_PASSWORD = 'snvr tuie onlb ybpz'\n# ALLOW PAYPAL POPUS\nSECURE_CROSS_ORIGIN_OPENER_POLICY='same-origin-allow-popups'",
+        "peekOfCode": "EMAIL_HOST_USER = env('EMAIL_HOST_USER')\nEMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')\n# ALLOW PAYPAL POPUS\nSECURE_CROSS_ORIGIN_OPENER_POLICY='same-origin-allow-popups'\n# AWS CREDENTIALS\nAWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID')\nAWS_SECRET_ACCESS_KEY = env('AWS_SECRET_ACCESS_KEY')\n# S3 AWS CONFIGURATION BUCKET \nAWS_STORAGE_BUCKET_NAME = env('AWS_STORAGE_BUCKET_NAME')\nAWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME",
         "detail": "ecommerce.ecommerce.settings",
         "documentation": {}
     },
@@ -1214,7 +1275,70 @@
         "kind": 5,
         "importPath": "ecommerce.ecommerce.settings",
         "description": "ecommerce.ecommerce.settings",
-        "peekOfCode": "EMAIL_HOST_PASSWORD = 'snvr tuie onlb ybpz'\n# ALLOW PAYPAL POPUS\nSECURE_CROSS_ORIGIN_OPENER_POLICY='same-origin-allow-popups'",
+        "peekOfCode": "EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')\n# ALLOW PAYPAL POPUS\nSECURE_CROSS_ORIGIN_OPENER_POLICY='same-origin-allow-popups'\n# AWS CREDENTIALS\nAWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID')\nAWS_SECRET_ACCESS_KEY = env('AWS_SECRET_ACCESS_KEY')\n# S3 AWS CONFIGURATION BUCKET \nAWS_STORAGE_BUCKET_NAME = env('AWS_STORAGE_BUCKET_NAME')\nAWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME\nAWS_S3_FILE_OVERWRITE = False",
+        "detail": "ecommerce.ecommerce.settings",
+        "documentation": {}
+    },
+    {
+        "label": "AWS_ACCESS_KEY_ID",
+        "kind": 5,
+        "importPath": "ecommerce.ecommerce.settings",
+        "description": "ecommerce.ecommerce.settings",
+        "peekOfCode": "AWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID')\nAWS_SECRET_ACCESS_KEY = env('AWS_SECRET_ACCESS_KEY')\n# S3 AWS CONFIGURATION BUCKET \nAWS_STORAGE_BUCKET_NAME = env('AWS_STORAGE_BUCKET_NAME')\nAWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME\nAWS_S3_FILE_OVERWRITE = False\nSTORAGES = {\n    # Media file (image) management   \n    \"default\": {\n        \"BACKEND\": \"storages.backends.s3boto3.S3StaticStorage\",",
+        "detail": "ecommerce.ecommerce.settings",
+        "documentation": {}
+    },
+    {
+        "label": "AWS_SECRET_ACCESS_KEY",
+        "kind": 5,
+        "importPath": "ecommerce.ecommerce.settings",
+        "description": "ecommerce.ecommerce.settings",
+        "peekOfCode": "AWS_SECRET_ACCESS_KEY = env('AWS_SECRET_ACCESS_KEY')\n# S3 AWS CONFIGURATION BUCKET \nAWS_STORAGE_BUCKET_NAME = env('AWS_STORAGE_BUCKET_NAME')\nAWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME\nAWS_S3_FILE_OVERWRITE = False\nSTORAGES = {\n    # Media file (image) management   \n    \"default\": {\n        \"BACKEND\": \"storages.backends.s3boto3.S3StaticStorage\",\n    },",
+        "detail": "ecommerce.ecommerce.settings",
+        "documentation": {}
+    },
+    {
+        "label": "AWS_STORAGE_BUCKET_NAME",
+        "kind": 5,
+        "importPath": "ecommerce.ecommerce.settings",
+        "description": "ecommerce.ecommerce.settings",
+        "peekOfCode": "AWS_STORAGE_BUCKET_NAME = env('AWS_STORAGE_BUCKET_NAME')\nAWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME\nAWS_S3_FILE_OVERWRITE = False\nSTORAGES = {\n    # Media file (image) management   \n    \"default\": {\n        \"BACKEND\": \"storages.backends.s3boto3.S3StaticStorage\",\n    },\n    # CSS and JS file management\n    \"staticfiles\": {",
+        "detail": "ecommerce.ecommerce.settings",
+        "documentation": {}
+    },
+    {
+        "label": "AWS_S3_CUSTOM_DOMAIN",
+        "kind": 5,
+        "importPath": "ecommerce.ecommerce.settings",
+        "description": "ecommerce.ecommerce.settings",
+        "peekOfCode": "AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME\nAWS_S3_FILE_OVERWRITE = False\nSTORAGES = {\n    # Media file (image) management   \n    \"default\": {\n        \"BACKEND\": \"storages.backends.s3boto3.S3StaticStorage\",\n    },\n    # CSS and JS file management\n    \"staticfiles\": {\n        \"BACKEND\": \"storages.backends.s3boto3.S3StaticStorage\",",
+        "detail": "ecommerce.ecommerce.settings",
+        "documentation": {}
+    },
+    {
+        "label": "AWS_S3_FILE_OVERWRITE",
+        "kind": 5,
+        "importPath": "ecommerce.ecommerce.settings",
+        "description": "ecommerce.ecommerce.settings",
+        "peekOfCode": "AWS_S3_FILE_OVERWRITE = False\nSTORAGES = {\n    # Media file (image) management   \n    \"default\": {\n        \"BACKEND\": \"storages.backends.s3boto3.S3StaticStorage\",\n    },\n    # CSS and JS file management\n    \"staticfiles\": {\n        \"BACKEND\": \"storages.backends.s3boto3.S3StaticStorage\",\n    },",
+        "detail": "ecommerce.ecommerce.settings",
+        "documentation": {}
+    },
+    {
+        "label": "STORAGES",
+        "kind": 5,
+        "importPath": "ecommerce.ecommerce.settings",
+        "description": "ecommerce.ecommerce.settings",
+        "peekOfCode": "STORAGES = {\n    # Media file (image) management   \n    \"default\": {\n        \"BACKEND\": \"storages.backends.s3boto3.S3StaticStorage\",\n    },\n    # CSS and JS file management\n    \"staticfiles\": {\n        \"BACKEND\": \"storages.backends.s3boto3.S3StaticStorage\",\n    },\n}",
+        "detail": "ecommerce.ecommerce.settings",
+        "documentation": {}
+    },
+    {
+        "label": "ADMIN_MEDIA_PREFIX",
+        "kind": 5,
+        "importPath": "ecommerce.ecommerce.settings",
+        "description": "ecommerce.ecommerce.settings",
+        "peekOfCode": "ADMIN_MEDIA_PREFIX = '/static/admin/'",
         "detail": "ecommerce.ecommerce.settings",
         "documentation": {}
     },
@@ -1549,6 +1673,15 @@
         "description": "venv.Scripts.activate_this",
         "peekOfCode": "sys.prefix = base",
         "detail": "venv.Scripts.activate_this",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "venv.Scripts.jp",
+        "description": "venv.Scripts.jp",
+        "peekOfCode": "def main():\n    parser = argparse.ArgumentParser()\n    parser.add_argument('expression')\n    parser.add_argument('-f', '--filename',\n                        help=('The filename containing the input data.  '\n                              'If a filename is not given then data is '\n                              'read from stdin.'))\n    parser.add_argument('--ast', action='store_true',\n                        help=('Pretty print the AST, do not search the data.'))\n    args = parser.parse_args()",
+        "detail": "venv.Scripts.jp",
         "documentation": {}
     }
 ]
